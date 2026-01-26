@@ -493,14 +493,14 @@ export default function Home() {
               How It Works
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Generate your LLMS.txt file in three simple steps
+              Generate and deploy your LLMS.txt file in four simple steps
             </p>
           </div>
 
-          <div className="max-w-5xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
               {/* Connecting Lines - Hidden on mobile */}
-              <div className="hidden md:block absolute top-16 left-1/4 right-1/4 h-0.5 bg-gradient-to-r from-primary-200 via-primary-300 to-primary-200"></div>
+              <div className="hidden lg:block absolute top-16 left-0 right-0 h-0.5 bg-gradient-to-r from-primary-200 via-indigo-200 via-green-200 to-blue-200"></div>
               
               {/* Step 1 */}
               <div className="relative z-10">
@@ -562,9 +562,9 @@ export default function Home() {
                   <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center text-white text-2xl font-bold mb-6 mx-auto">
                     3
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 text-center">Download & Deploy</h3>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3 text-center">Download & Edit</h3>
                   <p className="text-gray-600 text-center text-sm leading-relaxed">
-                    Edit if needed, then download and upload to your site
+                    Review and edit the generated content, then download the file
                   </p>
                   <div className="mt-6 flex justify-center">
                     <div className="w-12 h-12 bg-green-50 rounded-lg flex items-center justify-center">
@@ -572,6 +572,80 @@ export default function Home() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                       </svg>
                     </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Arrow - Hidden on mobile */}
+              <div className="hidden lg:flex items-center justify-center absolute top-16 right-1/8 transform translate-x-1/2 z-20">
+                <svg className="w-8 h-8 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </div>
+
+              {/* Step 4 */}
+              <div className="relative z-10">
+                <div className="bg-white rounded-2xl p-8 border-2 border-blue-200 shadow-lg hover:shadow-xl transition-shadow">
+                  <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white text-2xl font-bold mb-6 mx-auto">
+                    4
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3 text-center">Upload to Server</h3>
+                  <p className="text-gray-600 text-center text-sm leading-relaxed mb-4">
+                    Upload <code className="bg-gray-100 px-1.5 py-0.5 rounded text-xs font-mono">llms.txt</code> to your website&apos;s root directory
+                  </p>
+                  <div className="mt-6 flex justify-center">
+                    <div className="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center">
+                      <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Upload Instructions */}
+            <div className="mt-12 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 border border-blue-200">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Upload Instructions</h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="bg-white rounded-xl p-6 border border-blue-200">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center text-white font-bold">1</div>
+                    <h4 className="font-semibold text-gray-900">Access Your Server</h4>
+                  </div>
+                  <p className="text-sm text-gray-600 leading-relaxed">
+                    Connect to your web server via FTP, SFTP, or your hosting control panel (cPanel, Plesk, etc.)
+                  </p>
+                </div>
+                <div className="bg-white rounded-xl p-6 border border-blue-200">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center text-white font-bold">2</div>
+                    <h4 className="font-semibold text-gray-900">Navigate to Root</h4>
+                  </div>
+                  <p className="text-sm text-gray-600 leading-relaxed">
+                    Go to your website&apos;s root directory (usually <code className="bg-gray-100 px-1 rounded text-xs">public_html</code>, <code className="bg-gray-100 px-1 rounded text-xs">www</code>, or <code className="bg-gray-100 px-1 rounded text-xs">htdocs</code>)
+                  </p>
+                </div>
+                <div className="bg-white rounded-xl p-6 border border-blue-200">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center text-white font-bold">3</div>
+                    <h4 className="font-semibold text-gray-900">Upload File</h4>
+                  </div>
+                  <p className="text-sm text-gray-600 leading-relaxed">
+                    Upload the <code className="bg-gray-100 px-1 rounded text-xs">llms.txt</code> file to the root directory, same level as your <code className="bg-gray-100 px-1 rounded text-xs">index.html</code>
+                  </p>
+                </div>
+              </div>
+              <div className="mt-6 p-4 bg-blue-100 rounded-lg border border-blue-300">
+                <div className="flex items-start gap-3">
+                  <svg className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <div>
+                    <p className="text-sm font-medium text-blue-900 mb-1">Verify Upload</p>
+                    <p className="text-sm text-blue-800">
+                      After uploading, verify it&apos;s accessible at <code className="bg-blue-200 px-1.5 py-0.5 rounded text-xs font-mono">https://yourdomain.com/llms.txt</code>
+                    </p>
                   </div>
                 </div>
               </div>
@@ -595,6 +669,132 @@ export default function Home() {
         {/* Main Generator Component */}
         <div id="generator-section">
           <LLMSTxtGenerator />
+        </div>
+
+        {/* FAQ Section */}
+        <div className="mt-20 mb-10">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+              FAQ
+            </h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Best practices for creating a trustworthy LLMS.txt that improves AEO (Answer Engine Optimization) and reduces hallucinations.
+            </p>
+          </div>
+
+          <div className="max-w-4xl mx-auto space-y-4">
+            <details className="group bg-white rounded-2xl border border-gray-200 shadow-sm p-6 open:shadow-md transition-shadow">
+              <summary className="cursor-pointer list-none flex items-center justify-between gap-4">
+                <span className="text-lg font-semibold text-gray-900">Where do I put the file?</span>
+                <span className="text-gray-400 group-open:rotate-180 transition-transform">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </span>
+              </summary>
+              <div className="mt-4 text-sm text-gray-700 leading-relaxed">
+                Upload <code className="bg-gray-100 px-1.5 py-0.5 rounded text-xs font-mono">llms.txt</code> to your website&apos;s <strong>root</strong> directory so it&apos;s available at
+                <code className="bg-gray-100 px-1.5 py-0.5 rounded text-xs font-mono ml-1">https://yourdomain.com/llms.txt</code>.
+                For most hosts the root is <code className="bg-gray-100 px-1 rounded text-xs font-mono">public_html</code>, <code className="bg-gray-100 px-1 rounded text-xs font-mono">www</code>, or <code className="bg-gray-100 px-1 rounded text-xs font-mono">htdocs</code>.
+              </div>
+            </details>
+
+            <details className="group bg-white rounded-2xl border border-gray-200 shadow-sm p-6 open:shadow-md transition-shadow">
+              <summary className="cursor-pointer list-none flex items-center justify-between gap-4">
+                <span className="text-lg font-semibold text-gray-900">What should I include?</span>
+                <span className="text-gray-400 group-open:rotate-180 transition-transform">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </span>
+              </summary>
+              <div className="mt-4 text-sm text-gray-700 leading-relaxed">
+                Prioritize content that helps LLMs answer user questions accurately:
+                <ul className="mt-3 space-y-2">
+                  <li className="flex items-start gap-2">
+                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary-600 flex-shrink-0"></span>
+                    <span><strong>What you do:</strong> product/service summary, primary use-cases, target audience.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary-600 flex-shrink-0"></span>
+                    <span><strong>Key pages:</strong> pricing, docs, API reference, getting started, downloads, support.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary-600 flex-shrink-0"></span>
+                    <span><strong>Canonical links:</strong> link to the single best source of truth for each topic.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary-600 flex-shrink-0"></span>
+                    <span><strong>Contact & policy:</strong> support channels, refund policy, SLA, security page.</span>
+                  </li>
+                </ul>
+              </div>
+            </details>
+
+            <details className="group bg-white rounded-2xl border border-gray-200 shadow-sm p-6 open:shadow-md transition-shadow">
+              <summary className="cursor-pointer list-none flex items-center justify-between gap-4">
+                <span className="text-lg font-semibold text-gray-900">What should I NOT include?</span>
+                <span className="text-gray-400 group-open:rotate-180 transition-transform">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </span>
+              </summary>
+              <div className="mt-4 text-sm text-gray-700 leading-relaxed">
+                Avoid anything sensitive or likely to become outdated:
+                <ul className="mt-3 space-y-2">
+                  <li className="flex items-start gap-2">
+                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-red-500 flex-shrink-0"></span>
+                    <span><strong>Secrets:</strong> API keys, credentials, internal URLs, admin links.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-red-500 flex-shrink-0"></span>
+                    <span><strong>Personal data:</strong> emails/phones not meant for public, customer info, private docs.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-red-500 flex-shrink-0"></span>
+                    <span><strong>Speculative claims:</strong> “coming soon” timelines, unannounced features, vague guarantees.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-red-500 flex-shrink-0"></span>
+                    <span><strong>Duplicated sources:</strong> multiple pages that conflict—pick one canonical page instead.</span>
+                  </li>
+                </ul>
+              </div>
+            </details>
+
+            <details className="group bg-white rounded-2xl border border-gray-200 shadow-sm p-6 open:shadow-md transition-shadow">
+              <summary className="cursor-pointer list-none flex items-center justify-between gap-4">
+                <span className="text-lg font-semibold text-gray-900">How do I reduce AI hallucinations about my business?</span>
+                <span className="text-gray-400 group-open:rotate-180 transition-transform">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </span>
+              </summary>
+              <div className="mt-4 text-sm text-gray-700 leading-relaxed">
+                Use “truth anchors” and remove ambiguity:
+                <ul className="mt-3 space-y-2">
+                  <li className="flex items-start gap-2">
+                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-indigo-600 flex-shrink-0"></span>
+                    <span><strong>Be explicit:</strong> include exact product names, supported platforms, and current pricing link.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-indigo-600 flex-shrink-0"></span>
+                    <span><strong>Link sources of truth:</strong> docs, changelog, pricing, and policy pages.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-indigo-600 flex-shrink-0"></span>
+                    <span><strong>Remove stale info:</strong> keep outdated features and old pricing out of LLMS.txt.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-indigo-600 flex-shrink-0"></span>
+                    <span><strong>Prefer facts over marketing:</strong> short, verifiable statements beat fluffy claims.</span>
+                  </li>
+                </ul>
+              </div>
+            </details>
+          </div>
         </div>
 
         {/* SEO Benefits Visual */}
