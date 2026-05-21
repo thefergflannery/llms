@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Pincue — Tell your AI agent exactly what to fix</title>
-<meta name="description" content="Click any element on the page. Add a note. Pincue exports structured feedback your AI coding agent can act on instantly. Free forever." />
+<title>Pincue — The review session tool for AI-assisted builders</title>
+<meta name="description" content="Pincue is the review session tool for AI-assisted builders. Click any element, add a note, export a markdown file your agent acts on in one pass. No scripts. No tickets. No setup." />
 <link rel="icon" type="image/svg+xml" href="images/logo-icon-circle-green.svg" />
 
 <!-- Open Graph -->
 <meta property="og:title" content="Pincue — Tell your AI agent exactly what to fix">
-<meta property="og:description" content="Click any element. Add a note. Export feedback.md. Drop it into Cursor, Claude Code, or any AI agent.">
+<meta property="og:description" content="Not a bug reporter. Not a ticket. A deliberate, element-anchored action list your AI agent executes in one pass. Free to install.">
 <meta property="og:image" content="https://www.getpincue.com/images/og-social.png">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:alt" content="Pincue — Click any element, add a note, export structured feedback for your AI coding agent.">
@@ -20,7 +20,7 @@
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Pincue — Tell your AI agent exactly what to fix">
-<meta name="twitter:description" content="Click any element. Add a note. Export feedback.md. Drop it into Cursor, Claude Code, or any AI agent.">
+<meta name="twitter:description" content="Not a bug reporter. Not a ticket. A deliberate, element-anchored action list your AI agent executes in one pass. Free to install.">
 <meta name="twitter:image" content="https://www.getpincue.com/images/og-social.png">
 <meta name="twitter:image:alt" content="Pincue — Click any element, add a note, export structured feedback for your AI coding agent.">
 
@@ -69,6 +69,7 @@
 }
 .hero .lede { margin-bottom: 32px; }
 .hero-ctas { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 28px; }
+.hero-sub { font-size: 17px; font-weight: 500; color: var(--ink-soft); margin: -4px 0 22px; letter-spacing: -0.01em; }
 .hero-meta { display: flex; align-items: center; gap: 18px; color: var(--muted); font-size: 13.5px; flex-wrap: wrap; }
 .hero-meta .check { color: var(--green-deep); }
 .hero-meta i { font-size: 16px; }
@@ -621,16 +622,17 @@
           Tell your AI agent<br>
           <span class="hi-green">exactly what to fix.</span>
         </h1>
+        <p class="hero-sub">The review session tool for AI-assisted builders.</p>
         <p class="lede">
-          Click any element — <code class="mono" style="font-size:0.85em;color:var(--green-deep);background:var(--green-tint);padding:2px 7px;border-radius:5px;border:1px solid var(--green-soft);">button#submit.btn-primary</code> — and Pincue captures the selector, screenshot and severity. Export a clean markdown file your coding agent acts on instantly. No more vague back-and-forth.
+          Click any element — <code class="mono" style="font-size:0.85em;color:var(--green-deep);background:var(--green-tint);padding:2px 7px;border-radius:5px;border:1px solid var(--green-soft);">button#submit.btn-primary</code> — and Pincue captures the selector, screenshot and severity. Export a clean markdown file your agent acts on in one pass. No tickets. No scripts on your site. No setup. Works on localhost, staging, and production.
         </p>
         <div class="hero-ctas">
           <a href="signup.html" class="btn btn-green btn-lg"><i class="ti ti-brand-chrome" aria-hidden="true"></i> Install free — no account needed</a>
         </div>
         <div class="hero-meta">
           <span><i class="ti ti-circle-check check" aria-hidden="true"></i> No signup required</span>
-          <span><i class="ti ti-circle-check check" aria-hidden="true"></i> Works in 30 seconds</span>
-          <span><i class="ti ti-circle-check check" aria-hidden="true"></i> Chrome, Edge, Brave</span>
+          <span><i class="ti ti-circle-check check" aria-hidden="true"></i> No script on your site</span>
+          <span><i class="ti ti-circle-check check" aria-hidden="true"></i> Works on any URL including localhost</span>
         </div>
       </div>
 
@@ -707,7 +709,7 @@
 
     <div class="trust">
       <div class="trust-inner reveal">
-        <div class="trust-label">Built for the AI coding agent era</div>
+        <div class="trust-label">Works with every agent — not just one.</div>
         <div class="trust-logos">
           <span><i class="ti ti-cursor-text" aria-hidden="true"></i> Cursor</span>
           <span><i class="ti ti-terminal-2" aria-hidden="true"></i> Claude Code</span>
@@ -999,6 +1001,12 @@
       <p class="lede" style="margin:16px auto 0;max-width:560px;">Every guess your agent makes costs tokens. Pincue eliminates the guesswork — anchoring every note to the exact element, with context your agent can act on in one pass.</p>
     </div>
 
+    <div class="reveal" style="max-width:680px;margin:0 auto 48px;text-align:center;">
+      <p style="font-size:18px;font-weight:700;letter-spacing:-0.02em;color:var(--ink);margin-bottom:16px;">Most feedback tools capture what broke.<br>Pincue captures what you want changed.</p>
+      <p style="font-size:15px;color:var(--muted);line-height:1.65;margin-bottom:14px;">Bug reporters give your agent evidence — console logs, network errors, session replays. Useful when something crashes. Useless when you're doing a deliberate review.</p>
+      <p style="font-size:15px;color:var(--muted);line-height:1.65;">Pincue is for the review session. The pass you do before a client sees it. The UX sweep before you ship. Element-anchored, severity-tagged, and exported as a markdown instruction set your agent executes in one pass. No console log. No session replay. No ticket at the end. Just: here's what I want changed, and exactly where.</p>
+    </div>
+
     <div class="split-grid">
       <div class="split-card bad reveal" style="--reveal-delay:80ms">
         <div class="split-tag">Without Pincue</div>
@@ -1014,7 +1022,7 @@
       <div class="split-card reveal" style="--reveal-delay:180ms">
         <div class="split-tag">With Pincue</div>
         <div class="split-quote"><span class="mono">button#submit-order.btn-primary</span></div>
-        <p class="split-body">Smart selector. Screenshot. Severity. Suggested fix. One export. Your agent reads it once and acts — no follow-up, no guesswork, no wasted credits.</p>
+        <p class="split-body">Smart selector. Screenshot. Severity. Suggested fix. One export. Your agent reads it once and acts — no follow-up, no guesswork, no wasted credits. No Jira ticket. No team dashboard. Just the fix.</p>
         <svg class="split-art" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path d="M40 100 L 90 140 L 160 60" stroke="#00E496" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
@@ -1034,8 +1042,8 @@
       </div>
       <div class="why-pillar reveal" style="--reveal-delay:140ms">
         <div class="why-pillar-icon"><i class="ti ti-file-export" aria-hidden="true"></i></div>
-        <h4>Capture more, deploy once</h4>
-        <p>Review an entire flow in one session. Export one markdown file. Your agent handles the full batch in a single pass.</p>
+        <h4>One session. One file. One agent pass.</h4>
+        <p>Review an entire flow — checkout, onboarding, whatever — in a single session. Export once. Your agent handles the full batch without you re-explaining anything.</p>
       </div>
       <div class="why-pillar reveal" style="--reveal-delay:210ms">
         <div class="why-pillar-icon"><i class="ti ti-eye" aria-hidden="true"></i></div>
@@ -1233,30 +1241,102 @@
   <div class="container">
     <div class="reveal" style="text-align:center;margin-bottom:48px;">
       <span class="eyebrow"><span class="dot"></span> Who it's for</span>
-      <h2 class="h2" style="margin-top:18px;">If you ever say <span style="color:var(--green-deep)">"can you fix this?"</span></h2>
+      <h2 class="h2" style="margin-top:18px;">Built for builders who ship with AI.</h2>
     </div>
 
     <div class="audience-grid">
       <article class="aud-card reveal" style="--reveal-delay:0ms">
         <div class="emoji-slot"><i class="ti ti-palette" aria-hidden="true"></i></div>
-        <h3>Designers</h3>
-        <p>Hand off polish notes that survive translation from Figma to code.</p>
+        <h3>Designers &amp; freelancers</h3>
+        <p>Stop sending Loom videos. Click the elements that need changing, add your notes, export a file the developer — or their agent — can act on without a single follow-up call.</p>
       </article>
       <article class="aud-card reveal" style="--reveal-delay:80ms">
         <div class="emoji-slot"><i class="ti ti-rocket" aria-hidden="true"></i></div>
         <h3>Solo builders</h3>
-        <p>Be your own QA, design review and PM at the same time.</p>
+        <p>You're your own PM, QA, and designer. Pincue is your review pass before every deploy — structured, fast, and ready to drop straight into your agent.</p>
       </article>
       <article class="aud-card reveal" style="--reveal-delay:160ms">
         <div class="emoji-slot"><i class="ti ti-code" aria-hidden="true"></i></div>
-        <h3>Developers</h3>
-        <p>Stop writing prompts. Click the bug, your agent does the rest.</p>
+        <h3>AI-first developers</h3>
+        <p>You use Cursor, Windsurf, or Claude Code. You don't file tickets. You drop a markdown file into your agent and ship. Pincue produces exactly that file.</p>
       </article>
       <article class="aud-card reveal" style="--reveal-delay:240ms">
         <div class="emoji-slot"><i class="ti ti-users" aria-hidden="true"></i></div>
-        <h3>Agencies</h3>
-        <p>Send clients a clean link. Get back surgical, actionable feedback.</p>
+        <h3>Teams <span style="font-size:11px;font-weight:600;color:var(--green-deep);background:var(--green-tint);padding:2px 8px;border-radius:999px;border:1px solid var(--green-soft);vertical-align:middle;margin-left:4px;">Pro — coming soon</span></h3>
+        <p>Invite a client to review via a time-limited guest link. Their notes flow back to your account in real time. You triage, select, and export. They never need an account.</p>
       </article>
+    </div>
+  </div>
+</section>
+
+<!-- ─── HOW PINCUE IS DIFFERENT ───────────────────────────────────────────── -->
+<section id="different" style="background:var(--ink);color:#fff;padding:100px 0;">
+  <div class="container-sm">
+    <div class="reveal" style="text-align:center;margin-bottom:56px;">
+      <span class="eyebrow" style="background:rgba(0,228,150,0.12);border-color:rgba(0,228,150,0.2);color:var(--green);"><span class="dot"></span> Why not the others</span>
+      <h2 class="h2" style="margin-top:18px;color:#fff;">Every other tool ends with a ticket.<br><span style="color:var(--green);">Pincue ends with a fix.</span></h2>
+    </div>
+
+    <div class="reveal" style="--reveal-delay:80ms;overflow-x:auto;">
+      <table style="width:100%;border-collapse:collapse;font-size:14px;">
+        <thead>
+          <tr>
+            <th style="text-align:left;padding:14px 16px;color:rgba(255,255,255,0.4);font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;border-bottom:1px solid rgba(255,255,255,0.1);width:28%;"></th>
+            <th style="text-align:left;padding:14px 16px;color:rgba(255,255,255,0.5);font-weight:600;border-bottom:1px solid rgba(255,255,255,0.1);">Marker.io</th>
+            <th style="text-align:left;padding:14px 16px;color:rgba(255,255,255,0.5);font-weight:600;border-bottom:1px solid rgba(255,255,255,0.1);">Jam.dev</th>
+            <th style="text-align:left;padding:14px 16px;color:var(--green);font-weight:700;border-bottom:1px solid rgba(0,228,150,0.3);background:rgba(0,228,150,0.06);border-radius:8px 8px 0 0;">Pincue</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:13px 16px;color:rgba(255,255,255,0.4);font-size:12px;font-weight:600;letter-spacing:.04em;border-bottom:1px solid rgba(255,255,255,0.06);">Output</td>
+            <td style="padding:13px 16px;color:rgba(255,255,255,0.7);border-bottom:1px solid rgba(255,255,255,0.06);">Jira / Asana ticket</td>
+            <td style="padding:13px 16px;color:rgba(255,255,255,0.7);border-bottom:1px solid rgba(255,255,255,0.06);">Shareable bug link</td>
+            <td style="padding:13px 16px;color:#fff;font-weight:600;border-bottom:1px solid rgba(0,228,150,0.12);background:rgba(0,228,150,0.06);">Markdown your agent acts on</td>
+          </tr>
+          <tr>
+            <td style="padding:13px 16px;color:rgba(255,255,255,0.4);font-size:12px;font-weight:600;letter-spacing:.04em;border-bottom:1px solid rgba(255,255,255,0.06);">Requires site script</td>
+            <td style="padding:13px 16px;color:rgba(255,255,255,0.7);border-bottom:1px solid rgba(255,255,255,0.06);">Yes</td>
+            <td style="padding:13px 16px;color:rgba(255,255,255,0.7);border-bottom:1px solid rgba(255,255,255,0.06);">No</td>
+            <td style="padding:13px 16px;color:var(--green);font-weight:600;border-bottom:1px solid rgba(0,228,150,0.12);background:rgba(0,228,150,0.06);">No</td>
+          </tr>
+          <tr>
+            <td style="padding:13px 16px;color:rgba(255,255,255,0.4);font-size:12px;font-weight:600;letter-spacing:.04em;border-bottom:1px solid rgba(255,255,255,0.06);">Works on localhost</td>
+            <td style="padding:13px 16px;color:rgba(255,255,255,0.7);border-bottom:1px solid rgba(255,255,255,0.06);">No</td>
+            <td style="padding:13px 16px;color:rgba(255,255,255,0.7);border-bottom:1px solid rgba(255,255,255,0.06);">Yes</td>
+            <td style="padding:13px 16px;color:var(--green);font-weight:600;border-bottom:1px solid rgba(0,228,150,0.12);background:rgba(0,228,150,0.06);">Yes</td>
+          </tr>
+          <tr>
+            <td style="padding:13px 16px;color:rgba(255,255,255,0.4);font-size:12px;font-weight:600;letter-spacing:.04em;border-bottom:1px solid rgba(255,255,255,0.06);">Best for</td>
+            <td style="padding:13px 16px;color:rgba(255,255,255,0.7);border-bottom:1px solid rgba(255,255,255,0.06);">QA teams</td>
+            <td style="padding:13px 16px;color:rgba(255,255,255,0.7);border-bottom:1px solid rgba(255,255,255,0.06);">Bug capture</td>
+            <td style="padding:13px 16px;color:#fff;font-weight:600;border-bottom:1px solid rgba(0,228,150,0.12);background:rgba(0,228,150,0.06);">Deliberate review sessions</td>
+          </tr>
+          <tr>
+            <td style="padding:13px 16px;color:rgba(255,255,255,0.4);font-size:12px;font-weight:600;letter-spacing:.04em;border-bottom:1px solid rgba(255,255,255,0.06);">AI agent ready</td>
+            <td style="padding:13px 16px;color:rgba(255,255,255,0.7);border-bottom:1px solid rgba(255,255,255,0.06);">No</td>
+            <td style="padding:13px 16px;color:rgba(255,255,255,0.7);border-bottom:1px solid rgba(255,255,255,0.06);">Partial (MCP)</td>
+            <td style="padding:13px 16px;color:var(--green);font-weight:600;border-bottom:1px solid rgba(0,228,150,0.12);background:rgba(0,228,150,0.06);">Core purpose</td>
+          </tr>
+          <tr>
+            <td style="padding:13px 16px;color:rgba(255,255,255,0.4);font-size:12px;font-weight:600;letter-spacing:.04em;border-bottom:1px solid rgba(255,255,255,0.06);">Setup time</td>
+            <td style="padding:13px 16px;color:rgba(255,255,255,0.7);border-bottom:1px solid rgba(255,255,255,0.06);">30+ mins</td>
+            <td style="padding:13px 16px;color:rgba(255,255,255,0.7);border-bottom:1px solid rgba(255,255,255,0.06);">2 mins</td>
+            <td style="padding:13px 16px;color:var(--green);font-weight:600;border-bottom:1px solid rgba(0,228,150,0.12);background:rgba(0,228,150,0.06);">30 seconds</td>
+          </tr>
+          <tr>
+            <td style="padding:13px 16px;color:rgba(255,255,255,0.4);font-size:12px;font-weight:600;">Free tier</td>
+            <td style="padding:13px 16px;color:rgba(255,255,255,0.7);">15-day trial</td>
+            <td style="padding:13px 16px;color:rgba(255,255,255,0.7);">Unlimited jams</td>
+            <td style="padding:13px 16px;color:var(--green);font-weight:600;background:rgba(0,228,150,0.06);border-radius:0 0 8px 8px;">Forever free · 15 notes/session</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="reveal" style="--reveal-delay:160ms;text-align:center;margin-top:48px;max-width:560px;margin-left:auto;margin-right:auto;">
+      <p style="font-size:17px;font-weight:700;color:#fff;margin-bottom:10px;letter-spacing:-0.01em;">The difference isn't features. It's intent.</p>
+      <p style="font-size:15px;color:rgba(255,255,255,0.6);line-height:1.65;">Jam captures what broke. Pincue captures what you want changed. Those are different jobs. Pincue is built for one of them.</p>
     </div>
   </div>
 </section>
@@ -1373,7 +1453,7 @@
     <div class="faq-grid">
       <details class="faq-item reveal" style="--reveal-delay:0ms">
         <summary>Do I need an account? <i class="ti ti-plus" aria-hidden="true"></i></summary>
-        <p>Nope. Pincue works fully without one — you just lose your notes when the session ends. Create a free account to keep your session while the panel is open. Pro with persistent history is coming soon.</p>
+        <p>No. Pincue works fully without one — your notes are saved in local browser storage and persist until you clear it or start a new session. Create a free account to keep your session while the panel is open across tabs. Pro with full cloud sync and session history is coming soon.</p>
       </details>
       <details class="faq-item reveal" style="--reveal-delay:60ms">
         <summary>Which AI agents does it work with? <i class="ti ti-plus" aria-hidden="true"></i></summary>
@@ -1394,6 +1474,10 @@
       <details class="faq-item reveal" style="--reveal-delay:300ms">
         <summary>Is there a team plan? <i class="ti ti-plus" aria-hidden="true"></i></summary>
         <p>Pro includes shared workspaces for up to 5 teammates. Larger teams — <a href="mailto:hi@getpincue.com" style="color:var(--green-deep);text-decoration:underline;">drop us a line</a>.</p>
+      </details>
+      <details class="faq-item reveal" style="--reveal-delay:360ms">
+        <summary>How is Pincue different from Jam or Marker.io? <i class="ti ti-plus" aria-hidden="true"></i></summary>
+        <p>Jam and Marker.io are built to capture bugs and push them into team workflows — Jira, Linear, Slack. They're reactive tools designed for teams. Pincue is built for deliberate review sessions and exports a markdown file structured specifically for AI coding agents. No team required. No PM tool needed. No script on your site. You review, you export, your agent fixes. That's the whole loop.</p>
       </details>
     </div>
   </div>
@@ -1423,7 +1507,7 @@
           <img src="images/logo-icon-circle-green.svg" alt="" width="28" height="28" />
           <span>Pincue</span>
         </div>
-        <p class="foot-tag">Design feedback loops with direct contextual markdown files that save critical usage credits in your coding agent of choice.</p>
+        <p class="foot-tag">Precise feedback. Fewer tokens. Faster fixes.</p>
       </div>
       <div class="foot-col">
         <h4>Product</h4>
@@ -1497,12 +1581,13 @@
     }
   }
 
-  /* Animate hero lede + CTAs in after typewriter */
-  var heroLede = document.querySelector('.hero .lede');
-  var heroCtas = document.querySelector('.hero-ctas');
-  var heroMeta = document.querySelector('.hero-meta');
+  /* Animate hero subheading + lede + CTAs in after typewriter */
+  var heroSub   = document.querySelector('.hero-sub');
+  var heroLede  = document.querySelector('.hero .lede');
+  var heroCtas  = document.querySelector('.hero-ctas');
+  var heroMeta  = document.querySelector('.hero-meta');
   var heroStage = document.querySelector('.hero-stage');
-  [heroLede, heroCtas, heroMeta, heroStage].forEach(function (el) {
+  [heroSub, heroLede, heroCtas, heroMeta, heroStage].forEach(function (el) {
     if (el) { el.style.opacity = '0'; el.style.transform = 'translateY(18px)'; }
   });
 
@@ -1510,7 +1595,7 @@
 
   var heroDelay = (line1.length * 36) + (line2.length * 40) + 280;
   setTimeout(function () {
-    [heroLede, heroCtas, heroMeta].forEach(function (el, idx) {
+    [heroSub, heroLede, heroCtas, heroMeta].forEach(function (el, idx) {
       if (!el) return;
       setTimeout(function () {
         el.style.transition = 'opacity .5s ease, transform .5s ease';
