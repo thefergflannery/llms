@@ -475,25 +475,22 @@
 .out-prompt .at  { color: var(--green-deep); }
 
 /* ─── Features bento ────────────────────────────────────────────────────── */
-.bento { display: grid; grid-template-columns: 1.4fr 1fr 1fr; grid-auto-rows: minmax(180px, auto); gap: 20px; }
+.bento { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
 .bento-card {
   background: var(--paper); border: 1px solid var(--hair-2); border-radius: var(--r-lg);
-  padding: 26px; position: relative; overflow: hidden;
+  padding: 24px; position: relative; overflow: hidden;
   box-shadow: var(--shadow-soft); display: flex; flex-direction: column; gap: 10px;
 }
-.bento-card h3 { font-size: 19px; letter-spacing: -0.02em; font-weight: 700; }
-.bento-card p  { font-size: 14.5px; color: var(--muted); }
+.bento-card h3 { font-size: 16px; letter-spacing: -0.02em; font-weight: 700; }
+.bento-card p  { font-size: 13.5px; color: var(--muted); line-height: 1.5; }
 .bento-card .ico-lg {
   width: 40px; height: 40px; border-radius: 10px;
   background: var(--green-tint); color: var(--green-deep);
   display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 4px;
 }
-.bento-card.dark { background: var(--ink); color: #fff; border-color: var(--ink); }
-.bento-card.dark p { color: rgba(255,255,255,0.6); }
-.bento-card.dark .ico-lg { background: rgba(0,228,150,0.18); color: var(--green); }
-.bento-card.tall { grid-row: span 2; }
-.bento-card.wide { grid-column: span 2; }
 .bento-vis { margin-top: auto; }
+@media (max-width: 1024px) { .bento { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 640px)  { .bento { grid-template-columns: repeat(2, 1fr); } }
 
 .b-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 12px; }
 .b-tag { padding: 4px 10px; font-size: 12px; font-weight: 600; border-radius: 999px; background: var(--cream-2); color: var(--ink-soft); }
@@ -622,9 +619,9 @@
           Tell your AI agent<br>
           <span class="hi-green">exactly what to fix.</span>
         </h1>
-        <p class="hero-sub">The review session tool for AI-assisted builders.</p>
+        <p class="hero-sub">Superpowered feedback tool for AI builders.</p>
         <p class="lede">
-          Click any element — <code class="mono" style="font-size:0.85em;color:var(--green-deep);background:var(--green-tint);padding:2px 7px;border-radius:5px;border:1px solid var(--green-soft);">button#submit.btn-primary</code> — and Pincue captures the selector, screenshot and severity. Export a clean markdown file your agent acts on in one pass. No tickets. No scripts on your site. No setup. Works on localhost, staging, and production.
+          A Chrome extension. Click any element — <code class="mono" style="font-size:0.85em;color:var(--green-deep);background:var(--green-tint);padding:2px 7px;border-radius:5px;border:1px solid var(--green-soft);">button#submit.btn-primary</code> — and Pincue captures the selector, screenshot, and severity. Export one markdown file your agent acts on in one pass. No scripts. No tickets. No setup.
         </p>
         <div class="hero-ctas">
           <a href="signup.html" class="btn btn-green btn-lg"><i class="ti ti-brand-chrome" aria-hidden="true"></i> Install free — no account needed</a>
@@ -841,7 +838,7 @@
 
     <div class="ic-head reveal">
       <span class="eyebrow"><span class="dot"></span> What Pincue captures</span>
-      <h2 class="h2" style="margin-top:18px;">Every note, <span style="color:var(--green-deep)">surgically precise.</span></h2>
+      <h2 class="h2" style="margin-top:18px;">Every note, <span style="color:#fff;">surgically precise.</span></h2>
       <p class="lede" style="margin:14px auto 0;">Each pin captures the exact element — selector, screenshot, severity and your note — and packages it into a markdown block your agent acts on in one pass.</p>
     </div>
 
@@ -1001,10 +998,9 @@
       <p class="lede" style="margin:16px auto 0;max-width:560px;">Every guess your agent makes costs tokens. Pincue eliminates the guesswork — anchoring every note to the exact element, with context your agent can act on in one pass.</p>
     </div>
 
-    <div class="reveal" style="max-width:680px;margin:0 auto 48px;text-align:center;">
-      <p style="font-size:18px;font-weight:700;letter-spacing:-0.02em;color:var(--ink);margin-bottom:16px;">Most feedback tools capture what broke.<br>Pincue captures what you want changed.</p>
-      <p style="font-size:15px;color:var(--muted);line-height:1.65;margin-bottom:14px;">Bug reporters give your agent evidence — console logs, network errors, session replays. Useful when something crashes. Useless when you're doing a deliberate review.</p>
-      <p style="font-size:15px;color:var(--muted);line-height:1.65;">Pincue is for the review session. The pass you do before a client sees it. The UX sweep before you ship. Element-anchored, severity-tagged, and exported as a markdown instruction set your agent executes in one pass. No console log. No session replay. No ticket at the end. Just: here's what I want changed, and exactly where.</p>
+    <div class="reveal" style="max-width:580px;margin:0 auto 48px;text-align:center;">
+      <p style="font-size:19px;font-weight:700;letter-spacing:-0.02em;color:var(--ink);margin-bottom:12px;">Most tools capture what broke.<br>Pincue captures what you want changed.</p>
+      <p style="font-size:15px;color:var(--muted);line-height:1.6;">One is reactive. The other is deliberate. Pincue is for the review session before you ship — element-anchored, severity-tagged, ready for your agent.</p>
     </div>
 
     <div class="split-grid">
@@ -1110,11 +1106,6 @@
         <span class="eyebrow"><span class="dot"></span> The output</span>
         <h2 class="h2" style="margin-top:16px;margin-bottom:18px;">A file your agent <span style="color:var(--green-deep)">actually understands.</span></h2>
         <p class="lede">Every note exports as a clean markdown block — element, selector, role, severity, your feedback, suggested fix, and screenshot path. Nothing to restate. Nothing to translate.</p>
-        <div class="out-prompt">
-          <span class="cm"># Drop into your project, then:</span>
-          <span class="at">@feedback-checkout-2026-05-15.md</span><br>
-          Work through each note in order. Apply the suggested fix where given.
-        </div>
       </div>
 
       <div class="terminal reveal" style="--reveal-delay:120ms" role="img" aria-label="Example feedback.md markdown output">
@@ -1183,20 +1174,7 @@
     </div>
 
     <div class="bento">
-      <article class="bento-card wide tall dark reveal" style="--reveal-delay:0ms">
-        <div class="ico-lg"><i class="ti ti-pin-filled" aria-hidden="true"></i></div>
-        <h3>Pin any element, period.</h3>
-        <p>Click and Pincue reads id, classList, tag, role, aria attrs, text and computed bounds. Every note is anchored to a real DOM node — never a vague "the thing at the top right."</p>
-        <div class="bento-vis">
-          <div style="display:grid;grid-template-columns:1fr;gap:8px;margin-top:18px;">
-            <div class="sel-vis">button<span style="color:#FF7A50">#submit-order</span><span style="color:#6EB5FF">.btn-primary</span><span style="color:#F5C842">.btn-lg</span></div>
-            <div class="sel-vis">form<span style="color:#FF7A50">#checkout</span> &gt; <span style="color:#C97BFF">.actions</span> &gt; button</div>
-            <div class="sel-vis">aside<span style="color:#FF7A50">#order-summary</span> &gt; <span style="color:#6EB5FF">.summary-row</span>:nth-child(3)</div>
-          </div>
-        </div>
-      </article>
-
-      <article class="bento-card reveal" style="--reveal-delay:70ms">
+      <article class="bento-card reveal" style="--reveal-delay:0ms">
         <div class="ico-lg"><i class="ti ti-camera" aria-hidden="true"></i></div>
         <h3>Auto-screenshots</h3>
         <p>Viewport snap with a green bounding box. No crop, no edit, no ambiguity.</p>
@@ -1248,22 +1226,22 @@
       <article class="aud-card reveal" style="--reveal-delay:0ms">
         <div class="emoji-slot"><i class="ti ti-palette" aria-hidden="true"></i></div>
         <h3>Designers &amp; freelancers</h3>
-        <p>Stop sending Loom videos. Click the elements that need changing, add your notes, export a file the developer — or their agent — can act on without a single follow-up call.</p>
+        <p>No more Loom videos. Click the element, add your note, export a file the developer or their agent acts on directly.</p>
       </article>
       <article class="aud-card reveal" style="--reveal-delay:80ms">
         <div class="emoji-slot"><i class="ti ti-rocket" aria-hidden="true"></i></div>
         <h3>Solo builders</h3>
-        <p>You're your own PM, QA, and designer. Pincue is your review pass before every deploy — structured, fast, and ready to drop straight into your agent.</p>
+        <p>Your own PM, QA, and designer. Pincue is the review pass before every deploy — structured and ready for your agent.</p>
       </article>
       <article class="aud-card reveal" style="--reveal-delay:160ms">
         <div class="emoji-slot"><i class="ti ti-code" aria-hidden="true"></i></div>
         <h3>AI-first developers</h3>
-        <p>You use Cursor, Windsurf, or Claude Code. You don't file tickets. You drop a markdown file into your agent and ship. Pincue produces exactly that file.</p>
+        <p>You don't file tickets — you drop a markdown file into Cursor, Windsurf, or Claude Code and ship. Pincue produces that file.</p>
       </article>
       <article class="aud-card reveal" style="--reveal-delay:240ms">
         <div class="emoji-slot"><i class="ti ti-users" aria-hidden="true"></i></div>
-        <h3>Teams <span style="font-size:11px;font-weight:600;color:var(--green-deep);background:var(--green-tint);padding:2px 8px;border-radius:999px;border:1px solid var(--green-soft);vertical-align:middle;margin-left:4px;">Pro — coming soon</span></h3>
-        <p>Invite a client to review via a time-limited guest link. Their notes flow back to your account in real time. You triage, select, and export. They never need an account.</p>
+        <h3>Teams <span style="font-size:11px;font-weight:600;color:var(--green-deep);background:var(--green-tint);padding:2px 8px;border-radius:999px;border:1px solid var(--green-soft);vertical-align:middle;margin-left:4px;">Pro — soon</span></h3>
+        <p>Guest review links, real-time note feed, triage before export. Client never needs an account.</p>
       </article>
     </div>
   </div>
@@ -1277,66 +1255,50 @@
       <h2 class="h2" style="margin-top:18px;color:#fff;">Every other tool ends with a ticket.<br><span style="color:var(--green);">Pincue ends with a fix.</span></h2>
     </div>
 
-    <div class="reveal" style="--reveal-delay:80ms;overflow-x:auto;">
-      <table style="width:100%;border-collapse:collapse;font-size:14px;">
-        <thead>
-          <tr>
-            <th style="text-align:left;padding:14px 16px;color:rgba(255,255,255,0.4);font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;border-bottom:1px solid rgba(255,255,255,0.1);width:28%;"></th>
-            <th style="text-align:left;padding:14px 16px;color:rgba(255,255,255,0.5);font-weight:600;border-bottom:1px solid rgba(255,255,255,0.1);">Marker.io</th>
-            <th style="text-align:left;padding:14px 16px;color:rgba(255,255,255,0.5);font-weight:600;border-bottom:1px solid rgba(255,255,255,0.1);">Jam.dev</th>
-            <th style="text-align:left;padding:14px 16px;color:var(--green);font-weight:700;border-bottom:1px solid rgba(0,228,150,0.3);background:rgba(0,228,150,0.06);border-radius:8px 8px 0 0;">Pincue</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td style="padding:13px 16px;color:rgba(255,255,255,0.4);font-size:12px;font-weight:600;letter-spacing:.04em;border-bottom:1px solid rgba(255,255,255,0.06);">Output</td>
-            <td style="padding:13px 16px;color:rgba(255,255,255,0.7);border-bottom:1px solid rgba(255,255,255,0.06);">Jira / Asana ticket</td>
-            <td style="padding:13px 16px;color:rgba(255,255,255,0.7);border-bottom:1px solid rgba(255,255,255,0.06);">Shareable bug link</td>
-            <td style="padding:13px 16px;color:#fff;font-weight:600;border-bottom:1px solid rgba(0,228,150,0.12);background:rgba(0,228,150,0.06);">Markdown your agent acts on</td>
-          </tr>
-          <tr>
-            <td style="padding:13px 16px;color:rgba(255,255,255,0.4);font-size:12px;font-weight:600;letter-spacing:.04em;border-bottom:1px solid rgba(255,255,255,0.06);">Requires site script</td>
-            <td style="padding:13px 16px;color:rgba(255,255,255,0.7);border-bottom:1px solid rgba(255,255,255,0.06);">Yes</td>
-            <td style="padding:13px 16px;color:rgba(255,255,255,0.7);border-bottom:1px solid rgba(255,255,255,0.06);">No</td>
-            <td style="padding:13px 16px;color:var(--green);font-weight:600;border-bottom:1px solid rgba(0,228,150,0.12);background:rgba(0,228,150,0.06);">No</td>
-          </tr>
-          <tr>
-            <td style="padding:13px 16px;color:rgba(255,255,255,0.4);font-size:12px;font-weight:600;letter-spacing:.04em;border-bottom:1px solid rgba(255,255,255,0.06);">Works on localhost</td>
-            <td style="padding:13px 16px;color:rgba(255,255,255,0.7);border-bottom:1px solid rgba(255,255,255,0.06);">No</td>
-            <td style="padding:13px 16px;color:rgba(255,255,255,0.7);border-bottom:1px solid rgba(255,255,255,0.06);">Yes</td>
-            <td style="padding:13px 16px;color:var(--green);font-weight:600;border-bottom:1px solid rgba(0,228,150,0.12);background:rgba(0,228,150,0.06);">Yes</td>
-          </tr>
-          <tr>
-            <td style="padding:13px 16px;color:rgba(255,255,255,0.4);font-size:12px;font-weight:600;letter-spacing:.04em;border-bottom:1px solid rgba(255,255,255,0.06);">Best for</td>
-            <td style="padding:13px 16px;color:rgba(255,255,255,0.7);border-bottom:1px solid rgba(255,255,255,0.06);">QA teams</td>
-            <td style="padding:13px 16px;color:rgba(255,255,255,0.7);border-bottom:1px solid rgba(255,255,255,0.06);">Bug capture</td>
-            <td style="padding:13px 16px;color:#fff;font-weight:600;border-bottom:1px solid rgba(0,228,150,0.12);background:rgba(0,228,150,0.06);">Deliberate review sessions</td>
-          </tr>
-          <tr>
-            <td style="padding:13px 16px;color:rgba(255,255,255,0.4);font-size:12px;font-weight:600;letter-spacing:.04em;border-bottom:1px solid rgba(255,255,255,0.06);">AI agent ready</td>
-            <td style="padding:13px 16px;color:rgba(255,255,255,0.7);border-bottom:1px solid rgba(255,255,255,0.06);">No</td>
-            <td style="padding:13px 16px;color:rgba(255,255,255,0.7);border-bottom:1px solid rgba(255,255,255,0.06);">Partial (MCP)</td>
-            <td style="padding:13px 16px;color:var(--green);font-weight:600;border-bottom:1px solid rgba(0,228,150,0.12);background:rgba(0,228,150,0.06);">Core purpose</td>
-          </tr>
-          <tr>
-            <td style="padding:13px 16px;color:rgba(255,255,255,0.4);font-size:12px;font-weight:600;letter-spacing:.04em;border-bottom:1px solid rgba(255,255,255,0.06);">Setup time</td>
-            <td style="padding:13px 16px;color:rgba(255,255,255,0.7);border-bottom:1px solid rgba(255,255,255,0.06);">30+ mins</td>
-            <td style="padding:13px 16px;color:rgba(255,255,255,0.7);border-bottom:1px solid rgba(255,255,255,0.06);">2 mins</td>
-            <td style="padding:13px 16px;color:var(--green);font-weight:600;border-bottom:1px solid rgba(0,228,150,0.12);background:rgba(0,228,150,0.06);">30 seconds</td>
-          </tr>
-          <tr>
-            <td style="padding:13px 16px;color:rgba(255,255,255,0.4);font-size:12px;font-weight:600;">Free tier</td>
-            <td style="padding:13px 16px;color:rgba(255,255,255,0.7);">15-day trial</td>
-            <td style="padding:13px 16px;color:rgba(255,255,255,0.7);">Unlimited jams</td>
-            <td style="padding:13px 16px;color:var(--green);font-weight:600;background:rgba(0,228,150,0.06);border-radius:0 0 8px 8px;">Forever free · 15 notes/session</td>
-          </tr>
-        </tbody>
-      </table>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;" class="reveal" style="--reveal-delay:80ms;">
+
+      <!-- Marker.io -->
+      <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:28px 24px;">
+        <div style="font-size:13px;font-weight:700;color:rgba(255,255,255,0.4);letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px;">Marker.io</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:12px;">
+          <li style="font-size:14px;color:rgba(255,255,255,0.6);"><span style="color:rgba(255,255,255,0.25);font-size:12px;display:block;margin-bottom:2px;">Output</span>Jira / Asana ticket</li>
+          <li style="font-size:14px;color:rgba(255,255,255,0.6);"><span style="color:rgba(255,255,255,0.25);font-size:12px;display:block;margin-bottom:2px;">Setup</span>30+ mins · requires site script</li>
+          <li style="font-size:14px;color:rgba(255,255,255,0.6);"><span style="color:rgba(255,255,255,0.25);font-size:12px;display:block;margin-bottom:2px;">Best for</span>QA teams filing bugs</li>
+          <li style="font-size:14px;color:rgba(255,255,255,0.6);"><span style="color:rgba(255,255,255,0.25);font-size:12px;display:block;margin-bottom:2px;">AI ready</span>No</li>
+          <li style="font-size:14px;color:rgba(255,255,255,0.6);"><span style="color:rgba(255,255,255,0.25);font-size:12px;display:block;margin-bottom:2px;">Pricing</span>15-day trial</li>
+        </ul>
+      </div>
+
+      <!-- Jam.dev -->
+      <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:28px 24px;">
+        <div style="font-size:13px;font-weight:700;color:rgba(255,255,255,0.4);letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px;">Jam.dev</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:12px;">
+          <li style="font-size:14px;color:rgba(255,255,255,0.6);"><span style="color:rgba(255,255,255,0.25);font-size:12px;display:block;margin-bottom:2px;">Output</span>Shareable bug report link</li>
+          <li style="font-size:14px;color:rgba(255,255,255,0.6);"><span style="color:rgba(255,255,255,0.25);font-size:12px;display:block;margin-bottom:2px;">Setup</span>2 mins · no script needed</li>
+          <li style="font-size:14px;color:rgba(255,255,255,0.6);"><span style="color:rgba(255,255,255,0.25);font-size:12px;display:block;margin-bottom:2px;">Best for</span>Capturing crashes &amp; errors</li>
+          <li style="font-size:14px;color:rgba(255,255,255,0.6);"><span style="color:rgba(255,255,255,0.25);font-size:12px;display:block;margin-bottom:2px;">AI ready</span>Partial (MCP)</li>
+          <li style="font-size:14px;color:rgba(255,255,255,0.6);"><span style="color:rgba(255,255,255,0.25);font-size:12px;display:block;margin-bottom:2px;">Pricing</span>Free plan available</li>
+        </ul>
+      </div>
+
+      <!-- Pincue — highlighted -->
+      <div style="background:rgba(0,228,150,0.1);border:1px solid rgba(0,228,150,0.35);border-radius:16px;padding:28px 24px;position:relative;">
+        <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--green);color:var(--ink);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 14px;border-radius:999px;">You are here</div>
+        <div style="font-size:13px;font-weight:700;color:var(--green);letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px;">Pincue</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:12px;">
+          <li style="font-size:14px;color:#fff;font-weight:500;"><span style="color:rgba(0,228,150,0.6);font-size:12px;display:block;margin-bottom:2px;">Output</span>Markdown your agent acts on</li>
+          <li style="font-size:14px;color:#fff;font-weight:500;"><span style="color:rgba(0,228,150,0.6);font-size:12px;display:block;margin-bottom:2px;">Setup</span>30 seconds · no script needed</li>
+          <li style="font-size:14px;color:#fff;font-weight:500;"><span style="color:rgba(0,228,150,0.6);font-size:12px;display:block;margin-bottom:2px;">Best for</span>Deliberate review sessions</li>
+          <li style="font-size:14px;color:var(--green);font-weight:600;"><span style="color:rgba(0,228,150,0.6);font-size:12px;display:block;margin-bottom:2px;">AI ready</span>Core purpose</li>
+          <li style="font-size:14px;color:#fff;font-weight:500;"><span style="color:rgba(0,228,150,0.6);font-size:12px;display:block;margin-bottom:2px;">Pricing</span>Free + Premium versions</li>
+        </ul>
+      </div>
+
     </div>
 
-    <div class="reveal" style="--reveal-delay:160ms;text-align:center;margin-top:48px;max-width:560px;margin-left:auto;margin-right:auto;">
+    <div class="reveal" style="--reveal-delay:160ms;text-align:center;margin-top:48px;max-width:500px;margin-left:auto;margin-right:auto;">
       <p style="font-size:17px;font-weight:700;color:#fff;margin-bottom:10px;letter-spacing:-0.01em;">The difference isn't features. It's intent.</p>
-      <p style="font-size:15px;color:rgba(255,255,255,0.6);line-height:1.65;">Jam captures what broke. Pincue captures what you want changed. Those are different jobs. Pincue is built for one of them.</p>
+      <p style="font-size:15px;color:rgba(255,255,255,0.55);line-height:1.6;">Jam captures what broke. Pincue captures what you want changed. Those are different jobs. Pincue is built for one of them.</p>
     </div>
   </div>
 </section>
@@ -1537,9 +1499,6 @@
     </div>
     <div class="foot-bottom">
       <span>© 2026 Pincue. Built by <a href="https://fergflannery.com">Ferg Flannery</a>. &nbsp;<span style="color:var(--muted-2);font-size:12px;">v0.2.0</span></span>
-      <span style="display:flex;gap:14px;">
-        <a href="#" aria-label="GitHub"><i class="ti ti-brand-github" style="font-size:18px;" aria-hidden="true"></i></a>
-      </span>
     </div>
   </div>
 </footer>
