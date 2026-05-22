@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard — Pincue</title>
+  <meta name="robots" content="noindex" />
+  <link rel="icon" type="image/svg+xml" href="images/logo-icon-circle-green.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ─── Layout ───────────────────────────────────────────────────────────── */
+    body { background: var(--cream-3); }
+    .dash-wrap { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    /* ─── User bar ─────────────────────────────────────────────────────────── */
+    .user-bar {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px; margin-bottom: 40px;
+      padding: 16px 20px;
+      background: var(--paper); border: 1px solid var(--hair-2);
+      border-radius: var(--r-lg); flex-wrap: wrap;
+    }
+    .user-info { display: flex; align-items: center; gap: 12px; }
+    .user-avatar {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--green-tint); border: 1px solid var(--green-soft);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--green-deep); font-size: 16px; font-weight: 700; flex-shrink: 0;
+    }
+    .user-name { font-size: 14px; font-weight: 600; color: var(--ink); }
+    .user-plan {
+      display: inline-flex; align-items: center;
+      font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+      padding: 3px 9px; border-radius: 999px;
+      background: var(--green-tint); color: var(--green-deep);
+      border: 1px solid var(--green-soft);
+    }
+    .user-plan.free { background: var(--cream-2); color: var(--muted); border-color: var(--hair-3); }
+
+    /* ─── Section header ───────────────────────────────────────────────────── */
+    .dash-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 20px; gap: 16px;
+    }
+    .dash-header h2 { font-size: 20px; font-weight: 700; letter-spacing: -0.02em; }
+    .dash-count { font-size: 13px; color: var(--muted); }
+
+    /* ─── Empty state ──────────────────────────────────────────────────────── */
+    .empty-state {
+      text-align: center; padding: 64px 24px;
+      background: var(--paper); border: 1px dashed var(--hair-3);
+      border-radius: var(--r-lg);
+    }
+    .empty-icon { font-size: 40px; color: var(--muted); margin-bottom: 16px; }
+    .empty-state h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+    .empty-state p { font-size: 14px; color: var(--muted); max-width: 340px; margin: 0 auto 24px; line-height: 1.6; }
+
+    /* ─── Session cards ────────────────────────────────────────────────────── */
+    .session-list { display: flex; flex-direction: column; gap: 12px; }
+    .session-card {
+      background: var(--paper); border: 1px solid var(--hair-2);
+      border-radius: var(--r-lg); overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      transition: border-color .15s;
+    }
+    .session-card:hover { border-color: var(--hair-3); }
+    .session-head {
+      display: flex; align-items: center; gap: 14px;
+      padding: 18px 20px; cursor: pointer; user-select: none;
+    }
+    .session-icon {
+      width: 38px; height: 38px; border-radius: 10px;
+      background: var(--cream-2); border: 1px solid var(--hair-2);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--ink-soft); font-size: 18px; flex-shrink: 0;
+    }
+    .session-meta { flex: 1; min-width: 0; }
+    .session-name { font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .session-sub { font-size: 12px; color: var(--muted); display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .session-sub .sep { color: var(--hair-3); }
+    .session-pills { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+    .note-count {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 12px; font-weight: 600; color: var(--ink-soft);
+      background: var(--cream-2); border: 1px solid var(--hair-2);
+      padding: 4px 10px; border-radius: 999px;
+    }
+    .note-count i { font-size: 13px; }
+    .chevron { font-size: 18px; color: var(--muted); transition: transform .2s; flex-shrink: 0; }
+    .session-card.open .chevron { transform: rotate(180deg); }
+    .session-card.open .session-icon { background: var(--green-tint); border-color: var(--green-soft); color: var(--green-deep); }
+
+    /* ─── Notes panel ──────────────────────────────────────────────────────── */
+    .notes-panel { display: none; border-top: 1px solid var(--hair-2); }
+    .session-card.open .notes-panel { display: block; }
+    .notes-actions {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 20px; background: var(--cream-3);
+      border-bottom: 1px solid var(--hair-2); gap: 12px; flex-wrap: wrap;
+    }
+    .notes-loading { padding: 32px 20px; text-align: center; color: var(--muted); font-size: 14px; }
+
+    /* ─── Individual note ──────────────────────────────────────────────────── */
+    .note-item {
+      padding: 18px 20px; border-bottom: 1px solid var(--hair-2);
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .note-item:last-child { border-bottom: none; }
+    .note-top { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .note-num { font-family: var(--font-mono); font-size: 11px; color: var(--muted); font-weight: 500; }
+    .note-sel {
+      font-family: var(--font-mono); font-size: 11.5px;
+      background: var(--ink); color: var(--green);
+      padding: 4px 10px; border-radius: 6px;
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+      max-width: 320px; flex-shrink: 1;
+    }
+    .note-url { font-size: 11px; color: var(--muted); margin-left: auto; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px; }
+    .note-body p { font-size: 14px; color: var(--ink-soft); line-height: 1.55; }
+    .note-fix {
+      background: var(--cream-3); border: 1px solid var(--hair-2);
+      border-radius: 8px; padding: 10px 12px;
+    }
+    .note-fix-label { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 4px; }
+    .note-fix p { font-size: 13px; color: var(--ink-soft); line-height: 1.5; }
+
+    /* ─── Severity chips ───────────────────────────────────────────────────── */
+    .chip { display: inline-flex; align-items: center; font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 3px 9px; border-radius: 999px; border: 1px solid transparent; }
+    .chip-bug   { background: rgba(255,122,80,0.12); color: #c54a1f; border-color: rgba(255,122,80,0.25); }
+    .chip-ux    { background: rgba(245,200,66,0.15); color: #8c6a00; border-color: rgba(245,200,66,0.35); }
+    .chip-style { background: rgba(110,181,255,0.15); color: #2868b8; border-color: rgba(110,181,255,0.3); }
+    .chip-copy  { background: rgba(201,123,255,0.12); color: #7d34cc; border-color: rgba(201,123,255,0.25); }
+    .chip-accessibility, .chip-a11y { background: var(--green-tint); color: var(--green-deep); border-color: var(--green-soft); }
+
+    /* ─── Loading / error states ───────────────────────────────────────────── */
+    .dash-loading { text-align: center; padding: 80px 24px; color: var(--muted); font-size: 15px; }
+    .dash-error { text-align: center; padding: 48px 24px; color: #c54a1f; font-size: 14px; }
+
+    /* ─── Upgrade banner ───────────────────────────────────────────────────── */
+    .upgrade-banner {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px; padding: 16px 20px; margin-bottom: 28px;
+      background: var(--green-tint); border: 1px solid var(--green-soft);
+      border-radius: var(--r-lg); flex-wrap: wrap;
+    }
+    .upgrade-banner p { font-size: 14px; color: var(--green-deep); font-weight: 500; }
+    .upgrade-banner strong { color: var(--ink); }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">
+      <img src="images/logo-icon-circle-green.svg" alt="" width="30" height="30" />
+      <span>Pincue</span>
+    </a>
+    <div class="nav-cta">
+      <button id="btn-signout" class="btn btn-ghost btn-sm" style="display:none;">Sign out</button>
+    </div>
+  </div>
+</nav>
+
+<div class="dash-wrap" id="dash-wrap" style="display:none;">
+
+  <!-- User bar -->
+  <div class="user-bar">
+    <div class="user-info">
+      <div class="user-avatar" id="user-avatar">?</div>
+      <div>
+        <div class="user-name" id="user-name">—</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:1px;" id="user-email">—</div>
+      </div>
+    </div>
+    <span class="user-plan free" id="user-plan">Free</span>
+  </div>
+
+  <!-- Upgrade banner (shown for free users) -->
+  <div class="upgrade-banner" id="upgrade-banner" style="display:none;">
+    <p><strong>You're on the Free plan.</strong> Sessions sync when you upgrade to Pro — currently in development.</p>
+    <a href="/#pricing" class="btn btn-green btn-sm">Join waitlist</a>
+  </div>
+
+  <!-- Session list header -->
+  <div class="dash-header">
+    <h2>Your sessions</h2>
+    <span class="dash-count" id="session-count"></span>
+  </div>
+
+  <!-- Dynamic content -->
+  <div id="dash-content">
+    <div class="dash-loading"><i class="ti ti-loader" style="font-size:24px;"></i><br>Loading sessions…</div>
+  </div>
+
+</div>
+
+<!-- Auth redirect (shown briefly while checking) -->
+<div id="auth-check" style="display:flex;align-items:center;justify-content:center;min-height:80vh;">
+  <div style="text-align:center;color:var(--muted);font-size:14px;">
+    <i class="ti ti-loader" style="font-size:28px;display:block;margin-bottom:12px;"></i>
+    Checking session…
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  var SUPABASE_URL = 'https://lrlkptqzaddxskoikzqs.supabase.co';
+  var ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxybGtwdHF6YWRkeHNrb2lrenFzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkxODg5NzIsImV4cCI6MjA5NDc2NDk3Mn0.gF0IUWlY1kLZ5rw8PTx7WZjRiBDUlbzaQDj6Db_mLdM';
+  var AUTH_KEY = 'pinic:auth';
+
+  // ─── Auth helpers ──────────────────────────────────────────────────────────
+
+  function getStored() {
+    try { return JSON.parse(localStorage.getItem(AUTH_KEY)); } catch { return null; }
+  }
+
+  function setStored(data) {
+    localStorage.setItem(AUTH_KEY, JSON.stringify(data));
+  }
+
+  function clearStored() {
+    localStorage.removeItem(AUTH_KEY);
+  }
+
+  function anonHeaders() {
+    return { 'Content-Type': 'application/json', 'apikey': ANON_KEY };
+  }
+
+  function authHeaders(token) {
+    return Object.assign({}, anonHeaders(), { 'Authorization': 'Bearer ' + token });
+  }
+
+  async function getSession() {
+    var stored = getStored();
+    if (!stored) return null;
+    if (Date.now() > stored.expires_at - 60000) {
+      var res = await fetch(SUPABASE_URL + '/auth/v1/token?grant_type=refresh_token', {
+        method: 'POST', headers: anonHeaders(),
+        body: JSON.stringify({ refresh_token: stored.refresh_token })
+      });
+      if (!res.ok) { clearStored(); return null; }
+      var data = await res.json();
+      stored = {
+        access_token: data.access_token,
+        refresh_token: data.refresh_token,
+        expires_at: Date.now() + data.expires_in * 1000,
+        user: { id: data.user.id, email: data.user.email }
+      };
+      setStored(stored);
+    }
+    return stored;
+  }
+
+  // ─── Data fetching ─────────────────────────────────────────────────────────
+
+  async function fetchProfile(token, userId) {
+    var res = await fetch(
+      SUPABASE_URL + '/rest/v1/users?id=eq.' + userId + '&select=*',
+      { headers: authHeaders(token) }
+    );
+    if (!res.ok) return null;
+    var rows = await res.json();
+    return rows[0] || null;
+  }
+
+  async function fetchSessions(token, userId) {
+    var res = await fetch(
+      SUPABASE_URL + '/rest/v1/sessions?user_id=eq.' + userId + '&select=*&order=created_at.desc',
+      { headers: authHeaders(token) }
+    );
+    if (!res.ok) return [];
+    return res.json();
+  }
+
+  async function fetchNotes(token, sessionId) {
+    var res = await fetch(
+      SUPABASE_URL + '/rest/v1/notes?session_id=eq.' + sessionId + '&select=id,severity,note,suggested_fix,element,created_at&order=created_at.asc',
+      { headers: authHeaders(token) }
+    );
+    if (!res.ok) return [];
+    return res.json();
+  }
+
+  async function deleteSession(token, sessionId) {
+    await fetch(
+      SUPABASE_URL + '/rest/v1/sessions?id=eq.' + sessionId,
+      { method: 'DELETE', headers: Object.assign({}, authHeaders(token), { 'Prefer': 'return=minimal' }) }
+    );
+  }
+
+  // ─── Markdown export ───────────────────────────────────────────────────────
+
+  function severityLabel(s) {
+    return (s || 'note').toUpperCase();
+  }
+
+  function exportMarkdown(session, notes) {
+    var date = new Date(session.created_at).toISOString().split('T')[0];
+    var lines = [
+      '# Pincue — ' + session.name,
+      '',
+      'URL:    ' + (session.url || ''),
+      'Date:   ' + date,
+      'Notes:  ' + notes.length,
+      '',
+      '---',
+      ''
+    ];
+    notes.forEach(function (n, i) {
+      var el = n.element || {};
+      lines.push('## Note ' + (i + 1) + ' · [' + severityLabel(n.severity) + '] ' + (n.note || '').slice(0, 60));
+      lines.push('');
+      if (el.selector) { lines.push('Element:  ' + el.selector); }
+      if (el.role)     { lines.push('Role:     ' + el.role); }
+      if (el.innerText){ lines.push('Text:     "' + el.innerText + '"'); }
+      lines.push('');
+      lines.push('Severity: ' + (n.severity || 'note'));
+      lines.push('');
+      lines.push('Feedback:');
+      lines.push(n.note || '');
+      if (n.suggested_fix) {
+        lines.push('');
+        lines.push('Fix:');
+        lines.push(n.suggested_fix);
+      }
+      lines.push('');
+      lines.push('---');
+      lines.push('');
+    });
+    return lines.join('\n');
+  }
+
+  function downloadMarkdown(session, notes) {
+    var md = exportMarkdown(session, notes);
+    var date = new Date(session.created_at).toISOString().split('T')[0];
+    var slug = (session.name || 'session').toLowerCase().replace(/[^a-z0-9]+/g, '-').slice(0, 40);
+    var filename = 'feedback-' + slug + '-' + date + '.md';
+    var blob = new Blob([md], { type: 'text/markdown' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url; a.download = filename; a.click();
+    URL.revokeObjectURL(url);
+  }
+
+  function copyMarkdown(session, notes, btn) {
+    var md = exportMarkdown(session, notes);
+    navigator.clipboard.writeText(md).then(function () {
+      var orig = btn.innerHTML;
+      btn.innerHTML = '<i class="ti ti-check"></i> Copied';
+      setTimeout(function () { btn.innerHTML = orig; }, 2000);
+    });
+  }
+
+  // ─── Rendering ─────────────────────────────────────────────────────────────
+
+  function esc(str) {
+    return String(str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  function chipClass(severity) {
+    var map = { bug: 'chip-bug', ux: 'chip-ux', style: 'chip-style', copy: 'chip-copy', accessibility: 'chip-accessibility' };
+    return 'chip ' + (map[severity] || 'chip-ux');
+  }
+
+  function formatDate(iso) {
+    return new Date(iso).toLocaleDateString('en-IE', { day: 'numeric', month: 'short', year: 'numeric' });
+  }
+
+  function renderNotes(notes, sessionEl) {
+    var panel = sessionEl.querySelector('.notes-panel');
+    if (!notes.length) {
+      panel.innerHTML = '<div class="notes-loading" style="color:var(--muted)">No notes in this session.</div>';
+      return;
+    }
+    var notesHtml = notes.map(function (n, i) {
+      var el = n.element || {};
+      return '<div class="note-item">' +
+        '<div class="note-top">' +
+          '<span class="note-num">' + (i + 1) + '</span>' +
+          '<span class="' + chipClass(n.severity) + '">' + esc(n.severity || 'note') + '</span>' +
+          (el.selector ? '<span class="note-sel">' + esc(el.selector) + '</span>' : '') +
+          (el.url ? '<span class="note-url">' + esc(el.url.replace(/^https?:\/\//, '')) + '</span>' : '') +
+        '</div>' +
+        (n.note ? '<div class="note-body"><p>' + esc(n.note) + '</p></div>' : '') +
+        (n.suggested_fix ? '<div class="note-fix"><span class="note-fix-label">Suggested fix</span><p>' + esc(n.suggested_fix) + '</p></div>' : '') +
+      '</div>';
+    }).join('');
+
+    panel.innerHTML =
+      '<div class="notes-actions">' +
+        '<span style="font-size:13px;color:var(--muted);">' + notes.length + ' note' + (notes.length !== 1 ? 's' : '') + '</span>' +
+        '<div style="display:flex;gap:8px;">' +
+          '<button class="btn btn-ghost btn-sm btn-copy"><i class="ti ti-copy"></i> Copy markdown</button>' +
+          '<button class="btn btn-ghost btn-sm btn-download"><i class="ti ti-arrow-down-bar"></i> Download .md</button>' +
+        '</div>' +
+      '</div>' +
+      notesHtml;
+  }
+
+  function renderSessions(sessions) {
+    var content = document.getElementById('dash-content');
+    document.getElementById('session-count').textContent = sessions.length + ' session' + (sessions.length !== 1 ? 's' : '');
+
+    if (!sessions.length) {
+      content.innerHTML = '<div class="empty-state">' +
+        '<div class="empty-icon"><i class="ti ti-pin"></i></div>' +
+        '<h3>No sessions yet</h3>' +
+        '<p>Open the Pincue Chrome extension, start a session, and your synced sessions will appear here.</p>' +
+        '<a href="signup.html" class="btn btn-green"><i class="ti ti-brand-chrome"></i> Install the extension</a>' +
+      '</div>';
+      return;
+    }
+
+    content.innerHTML = '<div class="session-list" id="session-list"></div>';
+    var list = document.getElementById('session-list');
+
+    sessions.forEach(function (session) {
+      var card = document.createElement('div');
+      card.className = 'session-card';
+      card.dataset.id = session.id;
+      card.innerHTML =
+        '<div class="session-head">' +
+          '<div class="session-icon"><i class="ti ti-layout-list"></i></div>' +
+          '<div class="session-meta">' +
+            '<div class="session-name">' + esc(session.name || 'Untitled session') + '</div>' +
+            '<div class="session-sub">' +
+              (session.url ? '<span>' + esc(session.url.replace(/^https?:\/\//, '').split('/')[0]) + '</span><span class="sep">·</span>' : '') +
+              '<span>' + formatDate(session.created_at) + '</span>' +
+            '</div>' +
+          '</div>' +
+          '<div class="session-pills">' +
+            '<span class="note-count"><i class="ti ti-pin"></i> <span class="nc-val">…</span></span>' +
+          '</div>' +
+          '<i class="ti ti-chevron-down chevron"></i>' +
+        '</div>' +
+        '<div class="notes-panel">' +
+          '<div class="notes-loading"><i class="ti ti-loader"></i> Loading notes…</div>' +
+        '</div>';
+      list.appendChild(card);
+    });
+  }
+
+  // ─── Event handling ────────────────────────────────────────────────────────
+
+  var sessionCache = {};
+  var currentAuth = null;
+
+  function bindSessionCards(sessions) {
+    document.querySelectorAll('.session-card').forEach(function (card) {
+      var session = sessions.find(function (s) { return s.id === card.dataset.id; });
+      if (!session) return;
+
+      card.querySelector('.session-head').addEventListener('click', async function () {
+        var isOpen = card.classList.contains('open');
+        document.querySelectorAll('.session-card.open').forEach(function (c) { c.classList.remove('open'); });
+        if (isOpen) return;
+        card.classList.add('open');
+
+        if (!sessionCache[session.id]) {
+          try {
+            var notes = await fetchNotes(currentAuth.access_token, session.id);
+            sessionCache[session.id] = notes;
+            card.querySelector('.nc-val').textContent = notes.length;
+          } catch {
+            sessionCache[session.id] = [];
+          }
+        }
+        renderNotes(sessionCache[session.id], card);
+        var notes = sessionCache[session.id];
+
+        var copyBtn = card.querySelector('.btn-copy');
+        var dlBtn = card.querySelector('.btn-download');
+        if (copyBtn) copyBtn.addEventListener('click', function () { copyMarkdown(session, notes, copyBtn); });
+        if (dlBtn)   dlBtn.addEventListener('click', function () { downloadMarkdown(session, notes); });
+      });
+    });
+  }
+
+  // ─── Init ──────────────────────────────────────────────────────────────────
+
+  async function init() {
+    var auth = await getSession();
+    if (!auth) {
+      window.location.href = 'login.html?next=dashboard';
+      return;
+    }
+    currentAuth = auth;
+
+    // Show UI
+    document.getElementById('auth-check').style.display = 'none';
+    document.getElementById('dash-wrap').style.display = 'block';
+    document.getElementById('btn-signout').style.display = '';
+
+    // Sign out
+    document.getElementById('btn-signout').addEventListener('click', function () {
+      clearStored();
+      window.location.href = '/';
+    });
+
+    // Load profile
+    var profile = await fetchProfile(auth.access_token, auth.user.id);
+    var isPremium = profile && (profile.plan === 'premium' || profile.superuser === true);
+
+    var nameEl  = document.getElementById('user-name');
+    var emailEl = document.getElementById('user-email');
+    var planEl  = document.getElementById('user-plan');
+    var avatarEl= document.getElementById('user-avatar');
+
+    nameEl.textContent  = profile?.name || auth.user.email.split('@')[0];
+    emailEl.textContent = auth.user.email;
+    avatarEl.textContent = (profile?.name || auth.user.email)[0].toUpperCase();
+    planEl.textContent   = isPremium ? 'Pro' : 'Free';
+    if (!isPremium) {
+      planEl.classList.add('free');
+      document.getElementById('upgrade-banner').style.display = 'flex';
+    } else {
+      planEl.classList.remove('free');
+    }
+
+    // Load sessions
+    try {
+      var sessions = await fetchSessions(auth.access_token, auth.user.id);
+
+      // Pre-populate note counts from a single batch query
+      if (sessions.length) {
+        var ids = sessions.map(function (s) { return s.id; }).join(',');
+        var countRes = await fetch(
+          SUPABASE_URL + '/rest/v1/notes?session_id=in.(' + ids + ')&select=session_id',
+          { headers: authHeaders(auth.access_token) }
+        );
+        if (countRes.ok) {
+          var allNotes = await countRes.json();
+          var counts = {};
+          allNotes.forEach(function (n) { counts[n.session_id] = (counts[n.session_id] || 0) + 1; });
+          sessions.forEach(function (s) { s._noteCount = counts[s.id] || 0; });
+        }
+      }
+
+      renderSessions(sessions);
+      if (sessions.length) {
+        // Update note count pills now we have data
+        document.querySelectorAll('.session-card').forEach(function (card) {
+          var session = sessions.find(function (s) { return s.id === card.dataset.id; });
+          if (session) card.querySelector('.nc-val').textContent = session._noteCount || 0;
+        });
+        bindSessionCards(sessions);
+      }
+    } catch (err) {
+      document.getElementById('dash-content').innerHTML =
+        '<div class="dash-error"><i class="ti ti-alert-triangle"></i> Could not load sessions. Try refreshing.</div>';
+    }
+  }
+
+  init();
+}());
+</script>
+
+</body>
+</html>

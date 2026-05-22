@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pincue</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <link rel="stylesheet" href="sidepanel.css" />
+</head>
+<body>
+
+  <!-- ───────────────────────────────────────────────────────────────────
+       Capture-mode status rail. Driven off `.pp-activate-btn.pp-capturing`
+       via CSS :has(); no JS changes required.
+       ─────────────────────────────────────────────────────────────────── -->
+  <div class="pp-capture-rail" aria-hidden="true">
+    <span class="pp-capture-rail-dot"></span>
+    <span class="pp-capture-rail-label">Capture mode · click any element</span>
+    <span class="pp-capture-rail-key">Esc</span>
+  </div>
+
+  <!-- ─── Header ────────────────────────────────────────────────────── -->
+  <header class="pp-popup-header">
+    <img src="../images/pincue-full-green-white.svg" alt="Pincue" class="pp-popup-logo" />
+    <div class="pp-header-right">
+      <button class="pp-icon-btn" id="pp-account-btn" aria-label="Account" title="Account">
+        <i class="ti ti-user-circle"></i>
+      </button>
+      <button class="pp-end-btn" id="pp-end-btn" hidden>End session</button>
+    </div>
+  </header>
+
+  <!-- ─── Account overlay ──────────────────────────────────────────── -->
+  <div class="pp-account-panel" id="pp-account-panel" hidden>
+    <div class="pp-account-panel-header">
+      <span class="pp-panel-title">Account</span>
+      <button class="pp-icon-btn" id="pp-account-close-btn" aria-label="Close">
+        <i class="ti ti-x"></i>
+      </button>
+    </div>
+
+    <!-- Signed-out -->
+    <div id="pp-account-signedout">
+      <p class="pp-account-intro">Create a free account to save and sync sessions across devices.</p>
+      <div class="pp-account-tabs">
+        <button class="pp-tab pp-tab-active" data-tab="signup">Create account</button>
+        <button class="pp-tab" data-tab="signin">Sign in</button>
+      </div>
+
+      <div class="pp-tab-panel" id="pp-tab-signup">
+        <label class="pp-label" for="pp-signup-name">Name</label>
+        <input class="pp-input" type="text" id="pp-signup-name" placeholder="Your name" autocomplete="name">
+        <label class="pp-label" for="pp-signup-email">Email</label>
+        <input class="pp-input" type="email" id="pp-signup-email" placeholder="you@example.com" autocomplete="email">
+        <label class="pp-label" for="pp-signup-password">Password</label>
+        <input class="pp-input" type="password" id="pp-signup-password" placeholder="Min 8 characters" autocomplete="new-password">
+        <button class="pp-btn pp-btn-primary pp-btn-full" id="pp-signup-btn">Create account</button>
+        <p class="pp-auth-error" id="pp-signup-error" hidden></p>
+      </div>
+
+      <div class="pp-tab-panel" id="pp-tab-signin" hidden>
+        <label class="pp-label" for="pp-signin-email">Email</label>
+        <input class="pp-input" type="email" id="pp-signin-email" placeholder="you@example.com" autocomplete="email">
+        <label class="pp-label" for="pp-signin-password">Password</label>
+        <input class="pp-input" type="password" id="pp-signin-password" placeholder="Password" autocomplete="current-password">
+        <button class="pp-btn pp-btn-primary pp-btn-full" id="pp-signin-btn">Sign in</button>
+        <p class="pp-auth-error" id="pp-signin-error" hidden></p>
+      </div>
+    </div>
+
+    <!-- Signed-in -->
+    <div id="pp-account-signedin" hidden>
+      <div class="pp-account-user">
+        <div class="pp-account-avatar" id="pp-account-avatar">?</div>
+        <div>
+          <div class="pp-account-name" id="pp-account-name-display"></div>
+          <div class="pp-account-email" id="pp-account-email-display"></div>
+        </div>
+      </div>
+      <div id="pp-upgrade-wrap" class="pp-upgrade-wrap">
+        <button class="pp-btn pp-btn-secondary pp-btn-full" id="pp-upgrade-btn">
+          <i class="ti ti-rocket"></i> Pro — Notify me at launch
+        </button>
+        <p class="pp-auth-error" id="pp-upgrade-error" hidden></p>
+        <p class="pp-upgrade-coming" id="pp-upgrade-coming" hidden>You're on the list — we'll be in touch!</p>
+      </div>
+      <button class="pp-btn pp-btn-secondary pp-btn-full" id="pp-signout-btn">
+        <i class="ti ti-logout"></i> Sign out
+      </button>
+    </div>
+  </div>
+
+  <!-- ─── Intro / onboarding ───────────────────────────────────────── -->
+  <div class="pp-intro" id="pp-intro" hidden>
+    <div class="pp-intro-body">
+      <div class="pp-intro-hero">
+        <div class="pp-intro-hero-grid"></div>
+        <div class="pp-intro-hero-cross h"></div>
+        <div class="pp-intro-hero-cross v"></div>
+        <div class="pp-intro-hero-mark">
+          <img src="../images/logo-icon.svg" alt="" height="22">
+        </div>
+      </div>
+      <h2 class="pp-intro-heading">
+        Capture UI feedback<br>your <span class="hl">agent</span> can use.
+      </h2>
+      <p class="pp-intro-sub">
+        Click any element. Add a note. Export structured markdown your AI agent can act on — selectors, severity, screenshots included.
+      </p>
+      <ul class="pp-intro-feats">
+        <li>
+          <span class="pp-feat-num"><em>01</em></span>
+          <span>Pinpoint any element</span>
+          <i class="ti ti-cursor-text"></i>
+        </li>
+        <li>
+          <span class="pp-feat-num"><em>02</em></span>
+          <span>Auto-screenshot with bounding box</span>
+          <i class="ti ti-screenshot"></i>
+        </li>
+        <li>
+          <span class="pp-feat-num"><em>03</em></span>
+          <span>Add feedback notes</span>
+          <i class="ti ti-pencil"></i>
+        </li>
+        <li>
+          <span class="pp-feat-num"><em>04</em></span>
+          <span>Export structured markdown</span>
+          <i class="ti ti-file-description"></i>
+        </li>
+      </ul>
+    </div>
+    <div class="pp-intro-cta">
+      <button class="pp-btn pp-btn-primary pp-btn-full" id="pp-intro-skip-btn">Start capturing</button>
+      <button class="pp-btn pp-btn-secondary pp-btn-full" id="pp-intro-signin-btn">Sign in</button>
+      <button class="pp-btn pp-btn-secondary pp-btn-full" id="pp-intro-signup-btn" disabled>
+        Create account — <span style="opacity:0.6">coming soon</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ─── Page needs reload ───────────────────────────────────────── -->
+  <div class="pp-unavailable" id="pp-needs-reload" hidden>
+    <div class="pp-unavailable-icon"><i class="ti ti-refresh"></i></div>
+    <p>Pincue isn&#39;t active on this tab yet.</p>
+    <p class="pp-muted-text">Click the Pincue toolbar icon to inject the extension, then try again.</p>
+    <button class="pp-btn pp-btn-primary" id="pp-reload-btn">Reload tab</button>
+  </div>
+
+  <!-- ─── Page unsupported ────────────────────────────────────────── -->
+  <div class="pp-unavailable" id="pp-unavailable" hidden>
+    <div class="pp-unavailable-icon"><i class="ti ti-ban"></i></div>
+    <p>Pincue can&#39;t run on this page</p>
+    <p class="pp-muted-text">Navigate to a regular web page and try again. Chrome internal pages and PDFs aren&rsquo;t supported.</p>
+  </div>
+
+  <!-- ─── Empty state (no active session) ─────────────────────────── -->
+  <div class="pp-empty-state" id="pp-empty-state" hidden>
+    <div class="pp-empty-illu"><i class="ti ti-crosshair"></i></div>
+    <h3>Ready to capture</h3>
+    <p>Start a session, then click any element on the page to pin a note.</p>
+    <button class="pp-btn pp-btn-primary" id="pp-start-btn">+ Start session</button>
+    <div id="pp-restore-card" hidden>
+      <div class="pp-restore-divider">or continue where you left off</div>
+      <div class="pp-restore-row">
+        <div class="pp-restore-info">
+          <span class="pp-restore-name" id="pp-restore-name"></span>
+          <span class="pp-restore-meta" id="pp-restore-meta"></span>
+        </div>
+        <button class="pp-btn pp-btn-secondary pp-btn-sm" id="pp-restore-btn">Resume</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── Start session form ──────────────────────────────────────── -->
+  <div class="pp-start-form" id="pp-start-form" hidden>
+    <label class="pp-label" for="pp-session-name-input">Session name</label>
+    <input
+      type="text"
+      id="pp-session-name-input"
+      class="pp-input"
+      placeholder="e.g. Checkout flow review"
+      maxlength="80"
+      autocomplete="off"
+    />
+    <div class="pp-form-actions">
+      <button class="pp-btn pp-btn-secondary pp-btn-sm" id="pp-cancel-start-btn">Cancel</button>
+      <button class="pp-btn pp-btn-primary pp-btn-sm" id="pp-create-btn">Create session</button>
+    </div>
+  </div>
+
+  <!-- ─── Active session view ─────────────────────────────────────── -->
+  <div class="pp-session-view" id="pp-session-view" hidden>
+
+    <div class="pp-session-meta">
+      <div class="pp-session-eyebrow">
+        <span class="pp-dot"></span>
+        <span>Session</span>
+      </div>
+      <div class="pp-session-name-row">
+        <div class="pp-session-name" id="pp-session-name-display"></div>
+        <span class="pp-note-count-pill" id="pp-note-count-pill">0</span>
+        <button class="pp-icon-btn pp-session-rename-btn" id="pp-session-rename-btn" aria-label="Rename session" title="Rename session">
+          <i class="ti ti-pencil"></i>
+        </button>
+      </div>
+      <div id="pp-session-rename-form" hidden>
+        <input type="text" id="pp-session-rename-input" class="pp-input pp-input-sm" maxlength="80" autocomplete="off">
+        <div class="pp-form-actions pp-form-actions-mt">
+          <button class="pp-btn pp-btn-secondary pp-btn-sm" id="pp-session-rename-cancel">Cancel</button>
+          <button class="pp-btn pp-btn-primary pp-btn-sm" id="pp-session-rename-save">Save</button>
+        </div>
+      </div>
+      <div class="pp-session-url">
+        <i class="ti ti-world"></i>
+        <span class="pp-session-url-text" id="pp-session-url-display"></span>
+      </div>
+    </div>
+
+    <div class="pp-activate-wrap">
+      <button class="pp-activate-btn" id="pp-activate-btn">
+        <i class="ti ti-crosshair"></i>
+        <span>Activate capture mode</span>
+      </button>
+    </div>
+
+    <!-- Filter pills — JS hooks unchanged: .pp-filter-pill[data-filter] / .pp-filter-active -->
+    <div class="pp-filter-bar" id="pp-filter-bar">
+      <button class="pp-filter-pill pp-filter-active" data-filter="all">All</button>
+      <button class="pp-filter-pill" data-filter="bug"><span class="pp-filter-dot"></span>Bug</button>
+      <button class="pp-filter-pill" data-filter="ux"><span class="pp-filter-dot"></span>UX</button>
+      <button class="pp-filter-pill" data-filter="style"><span class="pp-filter-dot"></span>Style</button>
+      <button class="pp-filter-pill" data-filter="copy"><span class="pp-filter-dot"></span>Copy</button>
+      <button class="pp-filter-pill" data-filter="accessibility"><span class="pp-filter-dot"></span>A11y</button>
+    </div>
+
+    <div class="pp-notes-scroll">
+      <div class="pp-notes-list" id="pp-notes-list" role="list"></div>
+      <div class="pp-empty-notes" id="pp-empty-notes" hidden>
+        <i class="ti ti-pin"></i>
+        <p>No notes yet — activate capture mode and click an element to drop your first pin.</p>
+      </div>
+      <div class="pp-no-filter-match" id="pp-no-filter-match" hidden>
+        <i class="ti ti-filter-off"></i>
+        <p>No notes match this filter.</p>
+      </div>
+    </div>
+
+    <footer class="pp-export-footer">
+      <div class="pp-export-row">
+        <button class="pp-btn pp-btn-secondary" id="pp-copy-btn">
+          <i class="ti ti-clipboard"></i> Copy
+        </button>
+        <button class="pp-btn pp-btn-secondary" id="pp-download-btn">
+          <i class="ti ti-download"></i> Download
+        </button>
+        <button class="pp-btn pp-btn-secondary" id="pp-share-btn" title="Share a link your AI agent can read">
+          <i class="ti ti-link"></i> Share
+        </button>
+      </div>
+    </footer>
+
+  </div>
+
+  <div class="pp-version-bar">v1.0.0</div>
+
+  <script type="module" src="sidepanel.js"></script>
+</body>
+</html>

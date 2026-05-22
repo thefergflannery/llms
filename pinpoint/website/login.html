@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign in — Pincue</title>
+  <meta name="robots" content="noindex" />
+  <meta name="description" content="Sign in to your Pincue account to access your session dashboard." />
+  <meta property="og:title" content="Sign in — Pincue">
+  <meta property="og:description" content="Sign in to your Pincue account.">
+  <meta property="og:image" content="https://www.getpincue.com/images/og-social.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:alt" content="Pincue — Click any element, add a note, export structured feedback for your AI coding agent.">
+  <meta property="og:site_name" content="Pincue">
+  <meta property="og:image:width" content="2574">
+  <meta property="og:image:height" content="1476">
+  <meta property="og:url" content="https://www.getpincue.com/login">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://www.getpincue.com/images/og-social.png">
+  <meta name="twitter:image:alt" content="Pincue — Click any element, add a note, export structured feedback for your AI coding agent.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .auth-wrap {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 24px;
+    }
+    .auth-card {
+      background: var(--surface);
+      border: 1px solid var(--hair-2);
+      border-radius: 16px;
+      padding: 40px 36px;
+      max-width: 400px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    .auth-logo { height: 36px; width: auto; }
+    .auth-card h1 {
+      font-size: 22px; font-weight: 700; letter-spacing: -0.02em;
+      margin: 0; text-align: center;
+    }
+    .auth-card p {
+      font-size: 14px; color: var(--muted); line-height: 1.6;
+      margin: 0; max-width: 280px; text-align: center;
+    }
+    .auth-divider { border: none; border-top: 1px solid var(--hair-2); width: 100%; margin: 0; }
+    .auth-footer { font-size: 13px; color: var(--muted); text-align: center; }
+    .auth-footer a { color: var(--green-deep); text-decoration: none; }
+    .auth-footer a:hover { text-decoration: underline; }
+
+    /* Form */
+    .auth-form { width: 100%; display: flex; flex-direction: column; gap: 14px; }
+    .field { display: flex; flex-direction: column; gap: 6px; }
+    .field label { font-size: 13px; font-weight: 500; color: var(--ink-soft); }
+    .field input {
+      width: 100%; box-sizing: border-box;
+      padding: 11px 14px; font-size: 14px; font-family: inherit;
+      background: var(--bg); color: var(--ink);
+      border: 1.5px solid var(--hair-3); border-radius: 10px;
+      outline: none; transition: border-color .15s;
+    }
+    .field input:focus { border-color: var(--green-deep); }
+    .field input::placeholder { color: var(--muted); }
+
+    .auth-submit {
+      width: 100%; padding: 13px; font-size: 14px; font-weight: 600;
+      font-family: inherit; cursor: pointer; border: none;
+      background: var(--green-deep); color: #000;
+      border-radius: 10px; transition: opacity .15s;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .auth-submit:hover { opacity: 0.88; }
+    .auth-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .auth-error {
+      width: 100%; padding: 11px 14px; font-size: 13px;
+      background: #fff1f0; color: #c0392b;
+      border: 1px solid #f5c6c3; border-radius: 10px;
+      display: none;
+    }
+    .auth-error.visible { display: block; }
+  </style>
+  <script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="capture identify alias people.set people.set_once set set_once union unset remove opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing startSessionRecording stopSessionRecording".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    posthog.init('phc_wEri6QsthPUGxNMRMDgozp9mNoihSLr69BTmrME6bue7', { api_host: 'https://us.i.posthog.com', person_profiles: 'identified_only', autocapture: false });
+  </script>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">
+        <img src="images/pincue-full-green-white.svg" alt="Pincue" width="30" height="30" />
+        Pincue
+      </a>
+      <a href="/" class="btn btn-ghost btn-sm">← Back to home</a>
+    </div>
+  </nav>
+
+  <div class="auth-wrap">
+    <div class="auth-card">
+      <img src="images/pincue-full-green-white.svg" alt="Pincue" class="auth-logo" />
+      <h1>Sign in</h1>
+      <p>Access your session dashboard and sync your feedback history.</p>
+
+      <div id="authError" class="auth-error"></div>
+
+      <form class="auth-form" id="loginForm" novalidate>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email" required />
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="••••••••" autocomplete="current-password" required />
+        </div>
+        <button type="submit" class="auth-submit" id="submitBtn">
+          Sign in
+        </button>
+      </form>
+
+      <hr class="auth-divider" />
+
+      <p class="auth-footer">Don't have an account? <a href="signup.html">Get started free →</a></p>
+    </div>
+  </div>
+
+  <script>
+    var SUPABASE_URL = 'https://lrlkptqzaddxskoikzqs.supabase.co';
+    var ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxybGtwdHF6YWRkeHNrb2lrenFzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkxODg5NzIsImV4cCI6MjA5NDc2NDk3Mn0.gF0IUWlY1kLZ5rw8PTx7WZjRiBDUlbzaQDj6Db_mLdM';
+    var AUTH_KEY = 'pinic:auth';
+
+    // Redirect if already signed in
+    (function () {
+      try {
+        var stored = JSON.parse(localStorage.getItem(AUTH_KEY));
+        if (stored && stored.access_token && Date.now() < stored.expires_at - 10000) {
+          redirect();
+        }
+      } catch (e) {}
+    })();
+
+    function redirect() {
+      var params = new URLSearchParams(window.location.search);
+      var next = params.get('next') || '/dashboard';
+      window.location.href = next.startsWith('/') ? next : '/dashboard';
+    }
+
+    function showError(msg) {
+      var el = document.getElementById('authError');
+      el.textContent = msg;
+      el.classList.add('visible');
+    }
+
+    function hideError() {
+      document.getElementById('authError').classList.remove('visible');
+    }
+
+    document.getElementById('loginForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      hideError();
+
+      var email = document.getElementById('email').value.trim();
+      var password = document.getElementById('password').value;
+      var btn = document.getElementById('submitBtn');
+
+      if (!email || !password) {
+        showError('Please enter your email and password.');
+        return;
+      }
+
+      btn.disabled = true;
+      btn.innerHTML = '<i class="ti ti-loader-2" style="animation:spin 1s linear infinite"></i> Signing in…';
+
+      try {
+        var res = await fetch(SUPABASE_URL + '/auth/v1/token?grant_type=password', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'apikey': ANON_KEY },
+          body: JSON.stringify({ email: email, password: password })
+        });
+
+        var data = await res.json();
+
+        if (!res.ok) {
+          var msg = (data && data.error_description) || (data && data.message) || 'Sign in failed. Check your email and password.';
+          showError(msg);
+          btn.disabled = false;
+          btn.innerHTML = 'Sign in';
+          return;
+        }
+
+        var stored = {
+          access_token: data.access_token,
+          refresh_token: data.refresh_token,
+          expires_at: Date.now() + data.expires_in * 1000,
+          user: { id: data.user.id, email: data.user.email }
+        };
+        localStorage.setItem(AUTH_KEY, JSON.stringify(stored));
+
+        posthog.identify(data.user.id, { email: data.user.email });
+        posthog.capture('dashboard_signed_in', { email: data.user.email });
+
+        redirect();
+      } catch (err) {
+        showError('Network error. Please try again.');
+        btn.disabled = false;
+        btn.innerHTML = 'Sign in';
+      }
+    });
+  </script>
+  <style>
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</body>
+</html>
