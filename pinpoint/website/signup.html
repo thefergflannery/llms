@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="6907b5f2-5f0d-4088-95e4-03ed88bbb83d" data-blockingmode="auto" type="text/javascript"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Get started — Pincue</title>
+  <meta name="description" content="Install Pincue and start capturing UI feedback your AI agent can act on." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .auth-wrap {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 24px;
+    }
+    .auth-card {
+      background: var(--surface);
+      border: 1px solid var(--hair-2);
+      border-radius: 16px;
+      padding: 40px 36px;
+      max-width: 420px;
+      width: 100%;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    .auth-logo { height: 36px; width: auto; }
+    .auth-card h1 { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; margin: 0; }
+    .auth-card p { font-size: 14px; color: var(--muted); line-height: 1.6; margin: 0; max-width: 320px; }
+    .auth-steps {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      border: 1px solid var(--hair-2);
+      border-radius: 10px;
+      overflow: hidden;
+      text-align: left;
+    }
+    .auth-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 14px 16px;
+      background: var(--bg);
+      font-size: 13px;
+      color: var(--ink-soft);
+      border-bottom: 1px solid var(--hair-2);
+    }
+    .auth-step:last-child { border-bottom: none; }
+    .auth-step-num {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--green-deep);
+      color: #000;
+      font-size: 11px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .auth-step strong { color: var(--ink); display: block; margin-bottom: 2px; font-weight: 600; }
+    .auth-divider { border: none; border-top: 1px solid var(--hair-2); width: 100%; margin: 0; }
+    .auth-fine { font-size: 12px; color: var(--muted); }
+    .auth-fine a { color: var(--green-deep); text-decoration: none; }
+    .auth-fine a:hover { text-decoration: underline; }
+  </style>
+<script>
+  !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="capture identify alias people.set people.set_once set set_once union unset remove opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing startSessionRecording stopSessionRecording".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+  posthog.init('phc_wEri6QsthPUGxNMRMDgozp9mNoihSLr69BTmrME6bue7', { api_host: 'https://us.i.posthog.com', person_profiles: 'identified_only', autocapture: false });
+</script>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">
+        <img src="images/pincue-full-green-white.svg" alt="Pincue" width="30" height="30" />
+        Pincue
+      </a>
+      <a href="/" class="btn btn-ghost btn-sm">← Back to home</a>
+    </div>
+  </nav>
+
+  <div class="auth-wrap">
+    <div class="auth-card">
+      <img src="images/pincue-full-green-white.svg" alt="Pincue" class="auth-logo" />
+      <h1>Get started with Pincue</h1>
+      <p>Install the Chrome extension and start capturing feedback in under a minute. No account needed.</p>
+
+      <div class="auth-steps">
+        <div class="auth-step">
+          <div class="auth-step-num">1</div>
+          <div>
+            <strong>Install the extension</strong>
+            Add Pincue to Chrome from the Web Store — it's free.
+          </div>
+        </div>
+        <div class="auth-step">
+          <div class="auth-step-num">2</div>
+          <div>
+            <strong>Click the Pincue icon</strong>
+            Open the side panel on any web page you want to review.
+          </div>
+        </div>
+        <div class="auth-step">
+          <div class="auth-step-num">3</div>
+          <div>
+            <strong>Start a session</strong>
+            Click any element, add a note, and export your feedback as markdown.
+          </div>
+        </div>
+      </div>
+
+      <a href="#" class="btn btn-green" style="width:100%;justify-content:center;gap:8px;">
+        <i class="ti ti-brand-chrome"></i> Add to Chrome — it's free
+      </a>
+
+      <hr class="auth-divider" />
+
+      <p class="auth-fine">Pro tier with account sync is coming soon. <a href="/#pricing">Join the waitlist →</a></p>
+    </div>
+  </div>
+</body>
+</html>

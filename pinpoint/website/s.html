@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="6907b5f2-5f0d-4088-95e4-03ed88bbb83d" data-blockingmode="auto" type="text/javascript"></script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pincue — Shared session</title>
+<meta name="description" content="View a shared Pincue feedback session." />
+<link rel="icon" type="image/svg+xml" href="images/logo-icon-circle-green.svg" />
+<meta property="og:title" content="Pincue — Shared feedback session">
+<meta property="og:description" content="Click any element. Add a note. Export structured feedback your AI coding agent can act on instantly.">
+<meta property="og:image" content="https://www.getpincue.com/images/og-social.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:alt" content="Pincue — Click any element, add a note, export structured feedback for your AI coding agent.">
+<meta property="og:site_name" content="Pincue">
+<meta property="og:image:width" content="2574">
+<meta property="og:image:height" content="1476">
+<meta property="og:url" content="https://www.getpincue.com">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.getpincue.com/images/og-social.png">
+<meta name="twitter:image:alt" content="Pincue — Click any element, add a note, export structured feedback for your AI coding agent.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<script>
+  !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="capture identify alias people.set people.set_once set set_once union unset remove opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing startSessionRecording stopSessionRecording".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+  posthog.init('phc_wEri6QsthPUGxNMRMDgozp9mNoihSLr69BTmrME6bue7', {
+    api_host: 'https://us.i.posthog.com',
+    person_profiles: 'identified_only',
+    autocapture: false
+  });
+</script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --green: #00E496;
+  --ink: #0E0E10;
+  --surface: #141414;
+  --border: rgba(255,255,255,0.08);
+  --muted: rgba(255,255,255,0.45);
+  --font: 'Inter', -apple-system, sans-serif;
+  --mono: 'Fira Code', 'SFMono-Regular', monospace;
+  --bug: #FF7A50; --ux: #F5C842; --style: #6EB5FF; --copy: #C97BFF; --a11y: #00E496;
+}
+html, body { background: var(--ink); color: #fff; font-family: var(--font); min-height: 100vh; }
+a { color: var(--green); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.topbar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 24px; border-bottom: 1px solid var(--border);
+  background: #0A0A0A; position: sticky; top: 0; z-index: 10;
+}
+.topbar-logo { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 700; color: #fff; }
+.topbar-logo img { height: 22px; }
+.topbar-actions { display: flex; gap: 10px; align-items: center; }
+.btn { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: 100px;
+  font-size: 13px; font-weight: 600; cursor: pointer; border: none; font-family: var(--font); text-decoration: none; }
+.btn-green { background: var(--green); color: var(--ink); }
+.btn-ghost { background: transparent; color: var(--muted); border: 1px solid var(--border); }
+.btn-ghost:hover { color: #fff; border-color: rgba(255,255,255,0.2); text-decoration: none; }
+
+.container { max-width: 760px; margin: 0 auto; padding: 40px 24px 80px; }
+
+.state-loading, .state-error {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 80px 24px; text-align: center; gap: 16px; color: var(--muted);
+}
+.state-error h2 { font-size: 20px; color: #fff; }
+
+.session-header {
+  margin-bottom: 32px; padding-bottom: 24px; border-bottom: 1px solid var(--border);
+}
+.session-title { font-size: 26px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 10px; }
+.session-meta { display: flex; flex-wrap: wrap; gap: 16px; font-size: 13px; color: var(--muted); }
+.session-meta span { display: inline-flex; align-items: center; gap: 5px; }
+.session-meta i { font-size: 14px; }
+
+.copy-bar {
+  background: #0A0A0A; border: 1px solid var(--border); border-radius: 10px;
+  padding: 12px 16px; margin-bottom: 32px;
+  display: flex; align-items: center; gap: 12px;
+}
+.copy-bar-label { font-size: 12px; color: var(--muted); flex: 1; font-family: var(--mono); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.copy-bar-btn { flex-shrink: 0; }
+
+.note-list { display: flex; flex-direction: column; gap: 16px; }
+
+.note-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; overflow: hidden;
+}
+.note-card-header {
+  display: flex; align-items: center; gap: 10px;
+  padding: 12px 16px; border-bottom: 1px solid var(--border);
+}
+.note-num { font-size: 11px; color: var(--muted); font-family: var(--mono); flex-shrink: 0; }
+.note-severity {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 2px 8px; border-radius: 4px; flex-shrink: 0;
+}
+.note-severity.bug   { color: var(--bug); }
+.note-severity.ux    { color: var(--ux); }
+.note-severity.style { color: var(--style); }
+.note-severity.copy  { color: var(--copy); }
+.note-severity.accessibility { color: var(--a11y); }
+.note-selector {
+  font-family: var(--mono); font-size: 12px; color: var(--green);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1;
+}
+.note-body { padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; }
+.note-text { font-size: 14px; line-height: 1.6; color: rgba(255,255,255,0.9); }
+.note-fix {
+  background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+  border-radius: 8px; padding: 10px 14px;
+}
+.note-fix-label { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin-bottom: 4px; }
+.note-fix-text { font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.5; }
+.note-meta { display: flex; flex-wrap: wrap; gap: 14px; font-size: 11px; color: var(--muted); padding-top: 4px; border-top: 1px solid var(--border); }
+.note-meta span { display: inline-flex; align-items: center; gap: 4px; font-family: var(--mono); }
+.note-screenshot img { width: 100%; border-radius: 6px; border: 1px solid var(--border); }
+
+.footer-bar {
+  margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+}
+.footer-brand { font-size: 13px; color: var(--muted); display: flex; align-items: center; gap: 8px; }
+.footer-brand strong { color: #fff; }
+.spin { display: inline-block; animation: spin 0.8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── Raw markdown view ───────────────────────────────── */
+.raw-toggle { font-size: 12px; color: var(--muted); cursor: pointer; background: none; border: none; font-family: var(--font); padding: 0; }
+.raw-toggle:hover { color: #fff; }
+.raw-block {
+  background: #050507; border: 1px solid var(--border); border-radius: 10px;
+  padding: 20px; font-family: var(--mono); font-size: 12.5px; line-height: 1.7;
+  color: rgba(255,255,255,0.8); white-space: pre-wrap; word-break: break-word;
+  margin-top: 24px;
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a class="topbar-logo" href="/">
+    <img src="images/logo-icon-circle-green.svg" alt="Pincue" />
+    Pincue
+  </a>
+  <div class="topbar-actions">
+    <a href="signup.html" class="btn btn-ghost"><i class="ti ti-brand-chrome"></i> Install free</a>
+  </div>
+</div>
+
+<div class="container" id="app">
+  <div class="state-loading" id="state-loading">
+    <i class="ti ti-loader-2 spin" style="font-size:28px;color:var(--green)"></i>
+    <p>Loading session…</p>
+  </div>
+  <div class="state-error" id="state-error" hidden>
+    <i class="ti ti-unlink" style="font-size:40px;color:var(--muted)"></i>
+    <h2>Session not found</h2>
+    <p>This link may have expired (links live for 30 days) or never existed.</p>
+    <a href="/" class="btn btn-green" style="margin-top:8px;">Go to Pincue</a>
+  </div>
+  <div id="state-loaded" hidden>
+    <div class="session-header">
+      <div class="session-title" id="s-title"></div>
+      <div class="session-meta">
+        <span><i class="ti ti-world"></i><span id="s-url"></span></span>
+        <span><i class="ti ti-calendar"></i><span id="s-date"></span></span>
+        <span><i class="ti ti-pin"></i><span id="s-count"></span></span>
+      </div>
+    </div>
+    <div class="copy-bar">
+      <span class="copy-bar-label" id="s-current-url"></span>
+      <button class="btn btn-ghost copy-bar-btn" id="copy-url-btn"><i class="ti ti-clipboard"></i> Copy link</button>
+    </div>
+    <div class="note-list" id="note-list"></div>
+    <div style="margin-top:24px;display:flex;justify-content:flex-end;">
+      <button class="raw-toggle" id="raw-toggle">View raw markdown</button>
+    </div>
+    <pre class="raw-block" id="raw-block" hidden></pre>
+    <div class="footer-bar">
+      <div class="footer-brand">
+        Captured with <strong>Pincue</strong> — feedback your AI agent can act on.
+      </div>
+      <a href="signup.html" class="btn btn-green"><i class="ti ti-brand-chrome"></i> Install free</a>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var SUPABASE_URL = 'https://lrlkptqzaddxskoikzqs.supabase.co';
+  var ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxybGtwdHF6YWRkeHNrb2lrenFzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkxODg5NzIsImV4cCI6MjA5NDc2NDk3Mn0.gF0IUWlY1kLZ5rw8PTx7WZjRiBDUlbzaQDj6Db_mLdM';
+
+  var SEV_LABEL = { accessibility: 'A11y' };
+  function sevLabel(s) { return SEV_LABEL[s] || s; }
+
+  function esc(s) {
+    return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  function formatMd(session) {
+    var lines = [
+      '# Pincue — ' + session.name,
+      '',
+      '**URL:** ' + session.url,
+      '**Date:** ' + new Date(session.createdAt).toISOString().slice(0,10),
+      '**Notes:** ' + session.notes.length,
+      '',
+      '---',
+      ''
+    ];
+    session.notes.forEach(function(note, i) {
+      var el = note.element || {};
+      var badge = { bug:'[BUG]', ux:'[UX]', style:'[STYLE]', copy:'[COPY]', accessibility:'[ACCESSIBILITY]' }[note.severity] || '[' + (note.severity||'').toUpperCase() + ']';
+      lines.push('## Note ' + (i+1) + ': ' + badge + ' ' + esc(el.selector || ''));
+      lines.push('');
+      lines.push('**Selector:** `' + (el.selector||'') + '`');
+      lines.push('**Role:** `' + (el.role||'none') + '`');
+      lines.push('**Text:** "' + (el.innerText||'') + '"');
+      lines.push('**Page:** ' + (el.url||''));
+      lines.push('**Captured:** ' + (el.timestamp||''));
+      lines.push('');
+      lines.push('**Severity:** ' + (note.severity||''));
+      lines.push('');
+      lines.push('**Feedback:**');
+      lines.push(note.note || '');
+      if (note.suggestedFix) { lines.push(''); lines.push('**Suggested fix:**'); lines.push(note.suggestedFix); }
+      lines.push('');
+      lines.push('---');
+    });
+    return lines.join('\n');
+  }
+
+  var id = (window.location.pathname.match(/\/s\/([^/?#]+)/) || window.location.search.match(/[?&]id=([^&]+)/) || [])[1];
+
+  if (!id) { document.getElementById('state-loading').hidden = true; document.getElementById('state-error').hidden = false; return; }
+
+  document.getElementById('s-current-url').textContent = window.location.href;
+
+  fetch(SUPABASE_URL + '/rest/v1/public_sessions?id=eq.' + encodeURIComponent(id) + '&select=session_data', {
+    headers: { 'apikey': ANON_KEY }
+  })
+  .then(function(r) { return r.json(); })
+  .then(function(rows) {
+    document.getElementById('state-loading').hidden = true;
+    if (!rows || !rows.length || !rows[0].session_data) {
+      document.getElementById('state-error').hidden = false;
+      return;
+    }
+    var session = rows[0].session_data;
+    document.title = 'Pincue — ' + session.name;
+    document.getElementById('s-title').textContent = session.name;
+    document.getElementById('s-url').textContent = session.url || '—';
+    document.getElementById('s-date').textContent = new Date(session.createdAt).toLocaleDateString('en-IE', { day:'numeric', month:'short', year:'numeric' });
+    document.getElementById('s-count').textContent = (session.notes||[]).length + ' notes';
+    document.getElementById('raw-block').textContent = formatMd(session);
+    if (window.posthog) posthog.capture('shared_session_viewed', { note_count: (session.notes||[]).length, session_id: id });
+
+    var list = document.getElementById('note-list');
+    (session.notes || []).forEach(function(note, i) {
+      var el = note.element || {};
+      var card = document.createElement('div');
+      card.className = 'note-card';
+      var fixHtml = note.suggestedFix ? '<div class="note-fix"><div class="note-fix-label">Suggested fix</div><div class="note-fix-text">' + esc(note.suggestedFix) + '</div></div>' : '';
+      var shotHtml = note.screenshotDataUrl ? '<div class="note-screenshot"><img src="' + note.screenshotDataUrl + '" alt="Screenshot" loading="lazy" /></div>' : '';
+      card.innerHTML =
+        '<div class="note-card-header">' +
+          '<span class="note-num">' + String(i+1).padStart(2,'0') + '</span>' +
+          '<span class="note-severity ' + esc(note.severity) + '">' + esc(sevLabel(note.severity)) + '</span>' +
+          '<span class="note-selector">' + esc(el.selector || '') + '</span>' +
+        '</div>' +
+        '<div class="note-body">' +
+          shotHtml +
+          '<div class="note-text">' + esc(note.note || '') + '</div>' +
+          fixHtml +
+          '<div class="note-meta">' +
+            (el.tagName ? '<span>' + esc(el.tagName.toLowerCase()) + '</span>' : '') +
+            (el.innerText ? '<span>"' + esc(el.innerText.slice(0,50)) + (el.innerText.length>50?'…':'') + '"</span>' : '') +
+            (el.url ? '<span>' + esc((function(u){try{return new URL(u).hostname;}catch(e){return u;}})(el.url)) + '</span>' : '') +
+          '</div>' +
+        '</div>';
+      list.appendChild(card);
+    });
+
+    document.getElementById('state-loaded').hidden = false;
+  })
+  .catch(function() {
+    document.getElementById('state-loading').hidden = true;
+    document.getElementById('state-error').hidden = false;
+  });
+
+  document.getElementById('copy-url-btn').addEventListener('click', function() {
+    navigator.clipboard.writeText(window.location.href).then(function() {
+      var btn = document.getElementById('copy-url-btn');
+      btn.textContent = '✓ Copied';
+      setTimeout(function() { btn.innerHTML = '<i class="ti ti-clipboard"></i> Copy link'; }, 2000);
+    });
+  });
+
+  document.getElementById('raw-toggle').addEventListener('click', function() {
+    var block = document.getElementById('raw-block');
+    var btn = document.getElementById('raw-toggle');
+    block.hidden = !block.hidden;
+    btn.textContent = block.hidden ? 'View raw markdown' : 'Hide raw markdown';
+  });
+})();
+</script>
+</body>
+</html>
